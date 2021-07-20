@@ -2,6 +2,8 @@ import java.awt.*;
 import javax.swing.*;
 import java.io.*;
 
+// ABCDEFG
+
 
 public class Main {
 	private static final int BUTTON_HEIGHT = 50;
