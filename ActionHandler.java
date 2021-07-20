@@ -56,6 +56,7 @@ public class ActionHandler implements ActionListener{
 		 panPlanets.add(Main.ButtonSpeed);
 		 panPlanets.add(Main.TestLabel);
 		 
+		 // test4
 		
 		
 		if(e.getSource() == Main.button0) {
