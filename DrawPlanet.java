@@ -37,21 +37,9 @@ public class DrawPlanet extends JLabel {
 		g.drawImage(BackgroundImg, Main.PANEL_SIZE_X, Main.PANEL_SIZE_Y, null);
 		*/
 
-		Main.ButtonAngle = new JButton("Angle");
-		 Main.ButtonAngle.setBounds(70, 0, 70, 30);
-		 Main.ButtonAngle.addActionListener(Main.handler);
-		 Main.ButtonAngle.setVisible(true);
+		
+
 		 
-		 this.add(Main.ButtonAngle);
-
-		 // Create button1
-		 Main.button1 = new JButton("Button 2");
-		 Main.button1.setBounds(100, 200, 100, 50);
-		 Main.button1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		 Main.button1.addActionListener(Main.handler);
-		 Main.button1.setVisible(true);
-
-		 this.add(Main.button1);
 		
 		// Draw Ships
 		xship[0] = 50;

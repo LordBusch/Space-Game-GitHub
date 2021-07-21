@@ -5,9 +5,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
+import javax.swing.*;
 
 //import org.graalvm.compiler.hotspot.SymbolicSnippetEncoder.HotSpotSubstrateConstantReflectionProvider;
 
@@ -30,33 +29,14 @@ public class ActionHandler implements ActionListener{
 		
 		DrawPlanet panPlanets = new DrawPlanet();
 		
-		
-		 //TextField & Label for Angle of shot 
-		 Main.textFieldAngle = new JTextField();
-		 Main.textFieldAngle.setBounds(0, 0, 70, 30);
-		 panPlanets.add(Main.textFieldAngle);
-/*
-		 Main.ButtonAngle = new JButton("Angle");
-		 Main.ButtonAngle.setBounds(70, 0, 70, 30);
-		 Main.ButtonAngle.addActionListener(this);
-		 Main.ButtonAngle.setVisible(true);
-		 
-		 panPlanets.add(Main.ButtonAngle);
- */
-		 //TextField & Label for Speed of shot
-		 Main.textFieldSpeed = new JTextField();
-		 Main.textFieldSpeed.setBounds(0, 30, 70, 30);
-		 panPlanets.add(Main.textFieldSpeed);
-		 
-		 Main.ButtonSpeed = new JButton("Speed");
-		 Main.ButtonSpeed.setBounds(70, 30, 70, 30);
-		 Main.ButtonSpeed.addActionListener(this);
-
-		 
 		 panPlanets.add(Main.ButtonSpeed);
-		 panPlanets.add(Main.TestLabel);
+		 panPlanets.add(Main.ButtonAngle);
+		 panPlanets.add(Main.LabelAngle);
+		 panPlanets.add(Main.LabelSpeed);
+		 panPlanets.add(Main.textFieldSpeed);
+		 panPlanets.add(Main.textFieldAngle);
 		 
-		 // test4
+		 
 		
 		
 		if(e.getSource() == Main.button0) {
@@ -75,8 +55,6 @@ public class ActionHandler implements ActionListener{
 		
 			// Add panel new panel object to main frame and remove former obejct
 			frame.remove(Main.pan1);
-			frame.setVisible(true);
-		
 			frame.add(panPlanets);
 			frame.setVisible(true);
 
@@ -93,12 +71,11 @@ public class ActionHandler implements ActionListener{
 		
 
         if(e.getSource() == Main.ButtonAngle) {
-			//Main.TextForTestLabel = Main.textFieldAngle.getText();
-			Main.TextForTestLabel = "Tschüß";
+			//Main.textFieldAngle.getText();
+			//Main.LabelAngle.setText(Main.TextForLabelAngle);
 			System.out.println("Tschüß");
 			//String InputAngle = Main.textFieldAngle.getText();
-            //System.out.println(InputAngle);
-            //System.out.println(Main.textFieldAngle.getText());
+            
 		}
 
 

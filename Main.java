@@ -12,7 +12,8 @@ public class Main {
 	public static final int MAX_PLANET_RADIUS = 100;
     public static String InputAngle;
     public static String InputSpeed;
-	public static String TextForTestLabel = "Hallo";
+	public static String TextForLabelAngle = "Hallo";
+	public static String TextForLabelSpeed = "Hallo";
 	public static JButton button2;
 	public static JButton button1;
 	public static JButton button0;
@@ -24,14 +25,14 @@ public class Main {
     public static JTextField textFieldSpeed;
     public static JButton ButtonAngle;
     public static JButton ButtonSpeed;
-	public static JLabel TestLabel;
+	public static JLabel LabelAngle;
+	public static JLabel LabelSpeed;
 	public static ActionHandler handler;
 	
 	
 	
 	public Main(){
 		gui();
-		
 		
 	}
 	
@@ -104,10 +105,31 @@ public class Main {
 		Main.ButtonSpeed.setBounds(70, 30, 70, 30);
 		Main.ButtonSpeed.addActionListener(handler);
 */
-		TestLabel = new JLabel(TextForTestLabel);
-		TestLabel.setBounds(500, 500, 70, 30);
-		TestLabel.setVisible(true);
+		Main.textFieldAngle = new JTextField();
+		Main.textFieldAngle.setBounds(0, 0, 70, 30);
+		
 
+		Main.textFieldSpeed = new JTextField();
+		Main.textFieldSpeed.setBounds(0, 30, 70, 30);
+		
+
+		LabelAngle = new JLabel(TextForLabelAngle);
+		LabelAngle.setBounds(140, 0, 70, 30);
+		LabelAngle.setVisible(true);
+
+		LabelSpeed = new JLabel(TextForLabelSpeed);
+		LabelSpeed.setBounds(140, 30, 70, 30);
+		LabelSpeed.setVisible(true);
+
+		Main.ButtonSpeed = new JButton("Speed");
+		Main.ButtonSpeed.setBounds(70, 30, 70, 30);
+		Main.ButtonSpeed.addActionListener(handler);
+
+		Main.ButtonAngle = new JButton("Angle");
+		Main.ButtonAngle.setBounds(70, 0, 70, 30);
+		Main.ButtonAngle.addActionListener(handler);
+		 
+		
 
 		
 		// Create main panel
