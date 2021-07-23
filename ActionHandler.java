@@ -24,17 +24,9 @@ public class ActionHandler implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 
 		System.out.println("- Called actionPerformed() -");
-		// Test
-		// Action handler
 		
-		DrawPlanet panPlanets = new DrawPlanet();
 		
-		 panPlanets.add(Main.ButtonSpeed);
-		 panPlanets.add(Main.ButtonAngle);
-		 panPlanets.add(Main.LabelAngle);
-		 panPlanets.add(Main.LabelSpeed);
-		 panPlanets.add(Main.textFieldSpeed);
-		 panPlanets.add(Main.textFieldAngle);
+		
 		 
 		 
 		
@@ -44,7 +36,14 @@ public class ActionHandler implements ActionListener{
 			// Get panel from Main
 
 			// branchtest
-
+			DrawPlanet panPlanets = new DrawPlanet();
+		
+			panPlanets.add(Main.ButtonSpeed);
+			panPlanets.add(Main.ButtonAngle);
+			panPlanets.add(Main.LabelAngle);
+			panPlanets.add(Main.LabelSpeed);
+			panPlanets.add(Main.textFieldSpeed);
+			panPlanets.add(Main.textFieldAngle);
 			
 
 			JFrame frame = Main.frame;
@@ -61,47 +60,28 @@ public class ActionHandler implements ActionListener{
 		}
 		
 		if(e.getSource() == Main.button1) {
-			System.out.println("Hallo Button 1!");
+			
 		}
 
 
 		if(e.getSource() == Main.button2) {
-			System.out.println("Hallo Button 2!");
+			
 		}	
 		
 
         if(e.getSource() == Main.ButtonAngle) {
-			//Main.textFieldAngle.getText();
-			//Main.LabelAngle.setText(Main.TextForLabelAngle);
-			System.out.println("Tschüß");
-			//String InputAngle = Main.textFieldAngle.getText();
+			Main.InputAngle = Main.textFieldAngle.getText();
+			Main.LabelAngle.setText(Main.InputAngle);
+			Main.LabelAngle.setVisible(true);
             
 		}
 
 
         if(e.getSource() == Main.ButtonSpeed) {
-			String InputSpeed = Main.textFieldSpeed.getText();
-			System.out.println(InputSpeed);
-            //System.out.println(InputSpeed);
+			Main.InputSpeed = Main.textFieldSpeed.getText();
+			Main.LabelSpeed.setText(Main.InputSpeed);
+			Main.LabelSpeed.setVisible(true);
 		}
 
-		
-		/*
-		// Get panel from Main
-		JFrame frame = Main.frame;
-		
-		// Create new panel object
-		JPanel pan = new JPanel();
-		pan.setLayout(null); // set to x,y coordinates (0,0) is upper left
-
-		 
-		
-		// Add panel new panel object to main frame and remove former obejct
-		frame.remove(Main.pan1);
-		frame.setVisible(true);
-		
-		frame.add(panPlanets);
-		frame.setVisible(true);
-		*/
 	}
 }

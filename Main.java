@@ -115,11 +115,11 @@ public class Main {
 
 		LabelAngle = new JLabel(TextForLabelAngle);
 		LabelAngle.setBounds(140, 0, 70, 30);
-		LabelAngle.setVisible(true);
+		LabelAngle.setVisible(false);
 
 		LabelSpeed = new JLabel(TextForLabelSpeed);
 		LabelSpeed.setBounds(140, 30, 70, 30);
-		LabelSpeed.setVisible(true);
+		LabelSpeed.setVisible(false);
 
 		Main.ButtonSpeed = new JButton("Speed");
 		Main.ButtonSpeed.setBounds(70, 30, 70, 30);
