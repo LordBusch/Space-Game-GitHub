@@ -1,21 +1,10 @@
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
-import javax.swing.*;
-
-//import org.graalvm.compiler.hotspot.SymbolicSnippetEncoder.HotSpotSubstrateConstantReflectionProvider;
-
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-
-import java.awt.Graphics;
+import java.lang.Integer;
 
 
 public class ActionHandler implements ActionListener{
@@ -28,45 +17,42 @@ public class ActionHandler implements ActionListener{
 		
 		
 		 
-		 
+		Calculate panPlanets = new Calculate();
+		JFrame frame = Main.frame;
 		
 		
 		if(e.getSource() == Main.button0) {
 			System.out.println("Starting");
-			// Get panel from Main
+			Main.Start = true;
 
-			// branchtest
-			DrawPlanet panPlanets = new DrawPlanet();
-		
+			//Convert String to Int (NumberOfPlanets)
+			Main.InputCountPlanets = Main.textFieldCountPlanets.getText();
+			int  InputNumberOfPlanets = Integer.parseInt(Main.InputCountPlanets);  
+			Calculate.numberOfPlanets = InputNumberOfPlanets;
+
 			panPlanets.add(Main.ButtonSpeed);
 			panPlanets.add(Main.ButtonAngle);
 			panPlanets.add(Main.LabelAngle);
 			panPlanets.add(Main.LabelSpeed);
 			panPlanets.add(Main.textFieldSpeed);
 			panPlanets.add(Main.textFieldAngle);
+			panPlanets.add(Main.ResetGameButton);
+			panPlanets.add(Main.ShootButton);
+			
+			panPlanets.CalculateShip();
+			panPlanets.CalculatePlanets();
 			
 
-			JFrame frame = Main.frame;
+			
 		
-			
-
 		 
-		
 			// Add panel new panel object to main frame and remove former obejct
 			frame.remove(Main.pan1);
 			frame.add(panPlanets);
 			frame.setVisible(true);
-
-		}
-		
-		if(e.getSource() == Main.button1) {
+				
 			
 		}
-
-
-		if(e.getSource() == Main.button2) {
-			
-		}	
 		
 
         if(e.getSource() == Main.ButtonAngle) {
@@ -83,5 +69,17 @@ public class ActionHandler implements ActionListener{
 			Main.LabelSpeed.setVisible(true);
 		}
 
+		if(e.getSource() == Main.ResetGameButton) {
+			panPlanets.CalculatePlanets();
+			panPlanets.CalculateShip();
+			frame.repaint();
+		}
+
+		if(e.getSource() == Main.ShootButton) {
+			panPlanets.CalculateShot();
+			Main.Shoot = true;
+			frame.repaint();
+		}
+		
 	}
 }
