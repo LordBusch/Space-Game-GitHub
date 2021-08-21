@@ -329,6 +329,8 @@ public class Calculate extends JLabel {
 		}
 	}
 
+	/* HALLO MR */
+
 	public void DrawExplosion(Graphics g) {
 		//Load Explosion PNG
 		ImageIcon ExplosionIcon = new ImageIcon("Explosion Image 2.png");
