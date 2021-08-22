@@ -38,6 +38,7 @@ public class Calculate extends JLabel {
 	public static int SizeExplosionPic_Y = 100;
 	public static double angle;
 	public static double velocity;
+	public static int NumberShip;
 
 	//Create method for delay
 	public static void wait(int ms)
@@ -78,7 +79,7 @@ public class Calculate extends JLabel {
 
 	public void DrawShip(Graphics g) {
 		for (int i = 0; i < 2; i++) {
-			g.setColor(Color.black);
+			g.setColor(Color.red);
 			g.fillRect(xship[i], yship[i], 20, 20);
 		}
 	}
@@ -215,9 +216,23 @@ public class Calculate extends JLabel {
 		didHitShip0 = false;
 		didHitShip1 = false;
 
-		// Shoot with angle and velocity
-		angle = Double.parseDouble(Main.InputAngle);
-		velocity = Double.parseDouble(Main.InputSpeed);
+		if(Main.activeplayer == 0) {
+			// Shoot with angle and velocity
+			angle = Double.parseDouble(Main.InputAnglePlayer1);
+			velocity = Double.parseDouble(Main.InputSpeedPlayer1);
+			NumberShip = 0;
+			Main.activeplayer = 1;
+		}
+
+		else{
+			// Shoot with angle and velocity
+			angle = Double.parseDouble(Main.InputAnglePlayer2);
+			velocity = Double.parseDouble(Main.InputSpeedPlayer2);
+			NumberShip = 1;
+			Main.activeplayer = 0;
+		}
+
+		
 		
 
 		//desto höher x/y-vector, desto höher Abstände zwischen Punkten
@@ -226,8 +241,8 @@ public class Calculate extends JLabel {
 		System.out.format("Angle: %f Velocity: %f xvector: %f yvector: %f.\n", angle, velocity, xvector, yvector);
 
 		// SHoot from position of ship 0
-		xshot = (double)(xship[0] + shipSize / 2);
-		yshot = (double)(yship[0] + shipSize / 2);
+		xshot = (double)(xship[NumberShip] + shipSize / 2);
+		yshot = (double)(yship[NumberShip] + shipSize / 2);
 		
 		
 		
