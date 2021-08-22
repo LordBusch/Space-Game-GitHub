@@ -78,7 +78,7 @@ public class Calculate extends JLabel {
 
 	public void DrawShip(Graphics g) {
 		for (int i = 0; i < 2; i++) {
-			g.setColor(Color.black);
+			g.setColor(Color.red);
 			g.fillRect(xship[i], yship[i], 20, 20);
 		}
 	}
@@ -216,8 +216,8 @@ public class Calculate extends JLabel {
 		didHitShip1 = false;
 
 		// Shoot with angle and velocity
-		angle = Double.parseDouble(Main.InputAngle);
-		velocity = Double.parseDouble(Main.InputSpeed);
+		angle = Double.parseDouble(Main.InputAnglePlayer1);
+		velocity = Double.parseDouble(Main.InputSpeedPlayer1);
 		
 
 		//desto höher x/y-vector, desto höher Abstände zwischen Punkten

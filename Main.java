@@ -13,23 +13,32 @@ public class Main {
 	public static String InputCountPlanets;
 	public static boolean Shoot = false;
 	public static boolean Start = false;
-    public static String InputAngle;
-    public static String InputSpeed;
-	public static String TextForLabelAngle;
-	public static String TextForLabelSpeed;
+    public static String InputAnglePlayer1;
+	public static String InputAnglePlayer2;
+    public static String InputSpeedPlayer1;
+	public static String InputSpeedPlayer2;
+	public static String TextForLabelAnglePlayer1;
+	public static String TextForLabelSpeedPlayer1;
 	public static JButton button0;
 	public static JButton ResetGameButton;
-	public static JButton ShootButton;
+	public static JButton ShootButtonPlayer1;
+	public static JButton ShootButtonPlayer2;
 	public static JLabel labPlanets;
 	public static JPanel pan1;
 	public static JFrame frame;
-    public static JTextField textFieldAngle;
-    public static JTextField textFieldSpeed;
+    public static JTextField textFieldAnglePlayer1;
+	public static JTextField textFieldAnglePlayer2;
+    public static JTextField textFieldSpeedPlayer1;
+	public static JTextField textFieldSpeedPlayer2;
 	public static JTextField textFieldCountPlanets;
-    public static JButton ButtonAngle;
-    public static JButton ButtonSpeed;
-	public static JLabel LabelAngle;
-	public static JLabel LabelSpeed;
+    public static JButton AngleButtonPlayer1;
+	public static JButton AngleButtonPlayer2;
+    public static JButton SpeedButtonPlayer1;
+	public static JButton SpeedButtonPlayer2;
+	public static JLabel LabelAnglePlayer1;
+	public static JLabel LabelAnglePlayer2;
+	public static JLabel LabelSpeedPlayer1;
+	public static JLabel LabelSpeedPlayer2;
 	public static JLabel LabelCountPlanets;
 	public static ActionHandler handler;
 	
@@ -80,56 +89,90 @@ public class Main {
 		
 
 		ResetGameButton = new JButton("Reset Game");
-		ResetGameButton.setBounds(100, 2 * 30, 100, BUTTON_HEIGHT);
+		ResetGameButton.setBounds(PANEL_SIZE_X / 2 - 50, 0, 100, BUTTON_HEIGHT);
 		ResetGameButton.addActionListener(handler);
 
-		ShootButton = new JButton("Shoot");
-		ShootButton.setBounds(0, 60, 100, BUTTON_HEIGHT);
-		ShootButton.addActionListener(handler);
-
-		
 /*
-		ButtonAngle = new JButton("Angle");
-		ButtonAngle.setBounds(70, 0, 70, 30);
-		ButtonAngle.addActionListener(handler);
-		ButtonAngle.setVisible(true);
+		AngleButtonPlayer1 = new JButton("Angle");
+		AngleButtonPlayer1.setBounds(70, 0, 70, 30);
+		AngleButtonPlayer1.addActionListener(handler);
+		AngleButtonPlayer1.setVisible(true);
 */		 
 
 		/*
 		// Create Button for Angle
-		Main.ButtonAngle = new JButton("Angle");
-		Main.ButtonAngle.setBounds(70, 0, 70, 30);
-		Main.ButtonAngle.addActionListener(handler);
+		Main.AngleButtonPlayer1 = new JButton("Angle");
+		Main.AngleButtonPlayer1.setBounds(70, 0, 70, 30);
+		Main.AngleButtonPlayer1.addActionListener(handler);
 
         // Create Button for Speed
-		Main.ButtonSpeed = new JButton("Speed");
-		Main.ButtonSpeed.setBounds(70, 30, 70, 30);
-		Main.ButtonSpeed.addActionListener(handler);
+		Main.SpeedButtonPlayer1 = new JButton("Speed");
+		Main.SpeedButtonPlayer1.setBounds(70, 30, 70, 30);
+		Main.SpeedButtonPlayer1.addActionListener(handler);
 */
-		Main.textFieldAngle = new JTextField();
-		Main.textFieldAngle.setBounds(0, 0, 70, 30);
+
+		//menu player 1
+		ShootButtonPlayer1 = new JButton("Shoot");
+		ShootButtonPlayer1.setBounds(0, 60, 100, BUTTON_HEIGHT);
+		ShootButtonPlayer1.addActionListener(handler);
+
+		textFieldAnglePlayer1 = new JTextField();
+		textFieldAnglePlayer1.setBounds(0, 0, 70, 30);
 		
 
-		Main.textFieldSpeed = new JTextField();
-		Main.textFieldSpeed.setBounds(0, 30, 70, 30);
+		textFieldSpeedPlayer1 = new JTextField();
+		textFieldSpeedPlayer1.setBounds(0, 30, 70, 30);
 		
 
-		LabelAngle = new JLabel(TextForLabelAngle);
-		LabelAngle.setBounds(140, 0, 70, 30);
-		LabelAngle.setVisible(false);
+		LabelAnglePlayer1 = new JLabel(TextForLabelAnglePlayer1);
+		LabelAnglePlayer1.setBounds(140, 0, 70, 30);
+		LabelAnglePlayer1.setVisible(false);
 
-		LabelSpeed = new JLabel(TextForLabelSpeed);
-		LabelSpeed.setBounds(140, 30, 70, 30);
-		LabelSpeed.setVisible(false);
+		LabelSpeedPlayer1 = new JLabel(TextForLabelSpeedPlayer1);
+		LabelSpeedPlayer1.setBounds(140, 30, 70, 30);
+		LabelSpeedPlayer1.setVisible(false);
 
-		Main.ButtonSpeed = new JButton("Speed");
-		Main.ButtonSpeed.setBounds(70, 30, 70, 30);
-		Main.ButtonSpeed.addActionListener(handler);
+		SpeedButtonPlayer1 = new JButton("Speed");
+		SpeedButtonPlayer1.setBounds(70, 30, 70, 30);
+		SpeedButtonPlayer1.addActionListener(handler);
 
-		Main.ButtonAngle = new JButton("Angle");
-		Main.ButtonAngle.setBounds(70, 0, 70, 30);
-		Main.ButtonAngle.addActionListener(handler);
+		AngleButtonPlayer1 = new JButton("Angle");
+		AngleButtonPlayer1.setBounds(70, 0, 70, 30);
+		AngleButtonPlayer1.addActionListener(handler);
 		 
+
+
+		//menu player 2
+		ShootButtonPlayer2 = new JButton("Shoot");
+		ShootButtonPlayer2.setBounds(PANEL_SIZE_X - 100, 60, 100, BUTTON_HEIGHT);
+		ShootButtonPlayer2.addActionListener(handler);
+
+		textFieldAnglePlayer2 = new JTextField();
+		textFieldAnglePlayer2.setBounds(PANEL_SIZE_X - 210, 0, 70, 30);
+		
+
+		textFieldSpeedPlayer2 = new JTextField();
+		textFieldSpeedPlayer2.setBounds(PANEL_SIZE_X - 210, 30, 70, 30);
+		
+
+		LabelAnglePlayer2 = new JLabel(TextForLabelAnglePlayer1);
+		LabelAnglePlayer2.setBounds(PANEL_SIZE_X - 70, 0, 70, 30);
+		LabelAnglePlayer2.setVisible(false);
+
+		LabelSpeedPlayer2 = new JLabel(TextForLabelSpeedPlayer1);
+		LabelSpeedPlayer2.setBounds(PANEL_SIZE_X - 70, 30, 70, 30);
+		LabelSpeedPlayer2.setVisible(false);
+
+		AngleButtonPlayer2 = new JButton("Angle");
+		AngleButtonPlayer2.setBounds(PANEL_SIZE_X - 140, 0, 70, 30);
+		AngleButtonPlayer2.addActionListener(handler);
+
+		SpeedButtonPlayer2 = new JButton("Speed");
+		SpeedButtonPlayer2.setBounds(PANEL_SIZE_X - 140, 30, 70, 30);
+		SpeedButtonPlayer2.addActionListener(handler);
+
+
+
 		textFieldCountPlanets = new JTextField();
 		textFieldCountPlanets.setBounds(200, 100, 70, 30);
 
