@@ -71,7 +71,7 @@ public class ActionHandler implements ActionListener{
 
 		if(e.getSource() == Main.AngleButtonPlayer2) {
 			Main.InputAnglePlayer2 = Main.textFieldAnglePlayer2.getText();
-			Main.LabelAnglePlayer2.setText(Main.InputSpeedPlayer2);
+			Main.LabelAnglePlayer2.setText(Main.InputAnglePlayer2);
 			Main.LabelAnglePlayer2.setVisible(true);
             
 		}
@@ -90,15 +90,19 @@ public class ActionHandler implements ActionListener{
 		}
 
 		if(e.getSource() == Main.ShootButtonPlayer1) {
-			panPlanets.CalculateShot();
-			Main.Shoot = true;
-			frame.repaint();
+			if(Main.activeplayer == 0) {
+				panPlanets.CalculateShot();
+				Main.Shoot = true;
+				frame.repaint();
+			}
 		}
 
 		if(e.getSource() == Main.ShootButtonPlayer2) {
-			//panPlanets.CalculateShot();
-			//Main.Shoot = true;
-			//frame.repaint();
+			if(Main.activeplayer == 1) {
+				panPlanets.CalculateShot();
+				Main.Shoot = true;
+				frame.repaint();
+			}
 		}
 
 		if(e.getSource() == Main.ResetGameButton) {

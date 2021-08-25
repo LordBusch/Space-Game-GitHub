@@ -6,10 +6,11 @@ import javax.swing.*;
 
 public class Main {
 	private static final int BUTTON_HEIGHT = 50;
-	public static final int PANEL_SIZE_X = 1920;
-	public static final int PANEL_SIZE_Y = 1080;
+	public static final int PANEL_SIZE_X = 1600;
+	public static final int PANEL_SIZE_Y = 900;
 	public static final int MAX_PLANET_RADIUS = 100;
 	public static final int MIN_PLANET_RADIUS = 20;
+	public static int activeplayer = 0;
 	public static String InputCountPlanets;
 	public static boolean Shoot = false;
 	public static boolean Start = false;
