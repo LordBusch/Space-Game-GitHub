@@ -1,4 +1,4 @@
-import java.awt.*;
+
 import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
@@ -6,16 +6,28 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeUnit;
 import java.awt.Toolkit;
+import java.awt.*;
 
 public class Calculate extends JLabel {
 
-	public static int[] xpos = new int[10];
-	public static int[] ypos = new int[10];
-	public static int[] radius = new int[10];
+	public static final int Size_BlackHole_X = 400;
+	public static final int Size_BlackHole_Y = 280;
+	public static int midBlackHole_X;
+	public static int midBlackHole_Y;
+	public static int distanceX;
+	public static int distanceY;
+	public static int MaxPlanets = 10;
+	public static int[] xpos = new int[MaxPlanets];
+	public static int[] ypos = new int[MaxPlanets];
+	public static int[] radius = new int[MaxPlanets];
 	public static int[] xship = new int[2];
 	public static int[] yship = new int[2];
+	public static double[] randomNumber = new double[MaxPlanets];
+	public static int xpos_blackhole;
+	public static int ypos_blackhole;
 	public static int freeSpace = 100; // Planets must have this minimum distance to other planets and ships
 	public static int freeSpaceBorder = 100;
+	public static int freeSpace_BlackHole = 400;
 	public static int shipSize = 20;
 	public static boolean isColliding;
 	public static int MaxLengthShotSuper = 1500;
@@ -39,6 +51,9 @@ public class Calculate extends JLabel {
 	public static double angle;
 	public static double velocity;
 	public static int NumberShip;
+	public static double xvector;
+	public static double yvector;
+	public static String InputPic = "Space Game Planet 2.png";
 
 	//Create method for delay
 	public static void wait(int ms)
@@ -57,8 +72,15 @@ public class Calculate extends JLabel {
 
 
 	public void paintComponent(Graphics g) {
-		this.DrawPlanets(g);
-		this.DrawShip(g);
+		if (Main.Start | Main.Shoot) {
+			g.setColor(Color.black);
+			g.fillRect(0, 0, Main.PANEL_SIZE_X, Main.PANEL_SIZE_Y);
+			this.DrawPlanets(g);
+			this.DrawShip(g);
+			//this.DrawBlackHole(g);
+			Main.Start = false;
+		}
+		
 		if(Main.Shoot) {
 			this.DrawShot(g);
 			this.DrawExplosion(g);
@@ -79,8 +101,31 @@ public class Calculate extends JLabel {
 
 	public void DrawShip(Graphics g) {
 		for (int i = 0; i < 2; i++) {
-			g.setColor(Color.red);
-			g.fillRect(xship[i], yship[i], 20, 20);
+				//PNG left side
+				ImageIcon SpaceShipIconLeft = new ImageIcon("spaceship-right.png");
+				Image SpaceShipImgLeftImage = SpaceShipIconLeft.getImage();
+				Image resizedSpaceShipImgLeft = SpaceShipImgLeftImage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+				ImageIcon scaledSpaceShipIconLeft = new ImageIcon(resizedSpaceShipImgLeft);
+				BufferedImage bi = new BufferedImage(
+				scaledSpaceShipIconLeft.getIconWidth(),
+				scaledSpaceShipIconLeft.getIconHeight(),
+				BufferedImage.TYPE_INT_RGB);
+				//PNG right side
+				ImageIcon SpaceShipIconRight = new ImageIcon("spaceship-left.png");
+				Image SpaceShipImgRightImage = SpaceShipIconRight.getImage();
+				Image resizedSpaceShipImgRight = SpaceShipImgRightImage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+				ImageIcon scaledSpaceShipIconRight = new ImageIcon(resizedSpaceShipImgRight);
+				BufferedImage bi2 = new BufferedImage(
+				scaledSpaceShipIconRight.getIconWidth(),
+				scaledSpaceShipIconRight.getIconHeight(),
+				BufferedImage.TYPE_INT_RGB);
+
+			if (i == 0) {
+				scaledSpaceShipIconLeft.paintIcon(null, g, xship[i] - 35, yship[i] - 15);
+			}
+			else {
+				scaledSpaceShipIconRight.paintIcon(null, g, xship[i] + 5, yship[i] - 15);
+			}
 		}
 	}
 
@@ -113,6 +158,9 @@ public class Calculate extends JLabel {
 		// Draw planets
 		for (int i = 0; i < numberOfPlanets; i++) {
 			System.out.format("Hallo Planet %d\n", i);
+			//System.out.println(randomNumber[i]);
+			randomNumber[i] = Math.random();
+			System.out.println(randomNumber[i]);
 			
 			do {
 				// random gives random number 0..1, multiply with dimension
@@ -165,28 +213,36 @@ public class Calculate extends JLabel {
 			} while (isColliding == true);
 			
 			
-			
+			//randomNumber[i] = Math.random();
 		}
 		
 	}
 
 	public void DrawPlanets(Graphics g) {
-
-		//Draw Planet with random color
-		/*
-		float red = (float)Math.random();
-		float green = (float)Math.random();
-		float blue = (float)Math.random();
-		Color randomColor = new Color(red, green, blue);
-	
-		g.setColor(randomColor);
-		g.fillOval(xpos[i] - radius[i], ypos[i] - radius[i], radius[i] * 2, radius[i] * 2);
-		*/
+		
 
 		for (int i = 0; i < Calculate.numberOfPlanets; i++) {
-		
+			
+			if (Main.StarWarsMode) {
+				if (randomNumber[i] < 0.5) {
+					InputPic = "Endor.png";
+				}
+				if (randomNumber[i] > 0.5) {
+					InputPic = "DeathStar2.png";
+				}
+			}
+			if (Main.NormalMode) {
+				if (randomNumber[i] < 0.5) {
+					InputPic = "Space Game Planet 2.png";
+				}
+				if (randomNumber[i] > 0.5) {
+					InputPic = "jupiter.png";
+				}
+			}
+			
+			
 			// Draw Planet Image
-			ImageIcon planetIcon = new ImageIcon("Space Game Planet 2.png");
+			ImageIcon planetIcon = new ImageIcon(InputPic);
 			Image planetImg = planetIcon.getImage();
 
 			Image resizedPlanetImg = planetImg.getScaledInstance(Calculate.radius[i] * 2, Calculate.radius[i] * 2, java.awt.Image.SCALE_SMOOTH);
@@ -197,11 +253,30 @@ public class Calculate extends JLabel {
 			scaledPlanetIcon.getIconWidth(),
 			scaledPlanetIcon.getIconHeight(),
 			BufferedImage.TYPE_INT_RGB);
-		
-			// paint the Icon to the BufferedImage.
+
 			scaledPlanetIcon.paintIcon(null, g, Calculate.xpos[i] - Calculate.radius[i], Calculate.ypos[i] - Calculate.radius[i]);
-		
+
 		}
+	}
+
+	public void CalculateBlackHole() {
+		//To be implemented
+		
+	}
+
+	public void DrawBlackHole(Graphics g) {
+		ImageIcon BlackHoleIcon = new ImageIcon("black hole logo.png");
+		Image BlackHoleImg = BlackHoleIcon.getImage();
+
+		Image resizedBlackHoleImg = BlackHoleImg.getScaledInstance(Size_BlackHole_X, Size_BlackHole_Y, java.awt.Image.SCALE_SMOOTH);
+
+		ImageIcon scaledBlackHoleIcon = new ImageIcon(resizedBlackHoleImg);
+		BufferedImage bi = new BufferedImage(
+		scaledBlackHoleIcon.getIconWidth(),
+		scaledBlackHoleIcon.getIconHeight(),
+		BufferedImage.TYPE_INT_RGB);
+
+		scaledBlackHoleIcon.paintIcon(null, g, xpos_blackhole - Size_BlackHole_X / 2, ypos_blackhole - Size_BlackHole_Y / 2);
 	}
 
 
@@ -220,25 +295,20 @@ public class Calculate extends JLabel {
 			// Shoot with angle and velocity
 			angle = Double.parseDouble(Main.InputAnglePlayer1);
 			velocity = Double.parseDouble(Main.InputSpeedPlayer1);
+			xvector = velocity * Math.cos( angle / 180 * Math.PI);
+			yvector = velocity * Math.sin(-angle / 180 * Math.PI);
 			NumberShip = 0;
-			Main.activeplayer = 1;
 		}
 
 		else{
 			// Shoot with angle and velocity
 			angle = Double.parseDouble(Main.InputAnglePlayer2);
 			velocity = Double.parseDouble(Main.InputSpeedPlayer2);
+			xvector = -velocity * Math.cos( angle / 180 * Math.PI);
+			yvector = velocity * Math.sin(-angle / 180 * Math.PI);
 			NumberShip = 1;
-			Main.activeplayer = 0;
 		}
 
-		
-		
-
-		//desto höher x/y-vector, desto höher Abstände zwischen Punkten
-		double xvector = velocity * Math.cos( angle / 180 * Math.PI);
-		double yvector = velocity * Math.sin(-angle / 180 * Math.PI);
-		System.out.format("Angle: %f Velocity: %f xvector: %f yvector: %f.\n", angle, velocity, xvector, yvector);
 
 		// SHoot from position of ship 0
 		xshot = (double)(xship[NumberShip] + shipSize / 2);
@@ -297,11 +367,18 @@ public class Calculate extends JLabel {
                         didHitShip0 = true;
 						MaxLengthShot = count + 1;
 						CountTillColision = count;
+							Main.KillCount2++;
+							Main.KillCounter2String = "" + Main.KillCount2;
+							Main.KillCounterPlayer2.setText(Main.KillCounter2String);
                     }
                     else {
                         didHitShip1 = true;
 						MaxLengthShot = count + 1;
 						CountTillColision = count;
+							Main.KillCount1++;
+							Main.KillCounter1String = "" + Main.KillCount1;
+							Main.KillCounterPlayer1.setText(Main.KillCounter1String);
+						
                     }
 				}
 			}
@@ -311,6 +388,12 @@ public class Calculate extends JLabel {
 		} while (count < MaxLengthShot);
 		count = 0;
 		System.out.println("CalculateShot ended " + didHitPlanet + " " + didHitShip0 + " " + didHitShip1 + " " + CountTillColision);
+		if(Main.activeplayer == 0) {
+			Main.activeplayer = 1;
+		}
+		else {
+			Main.activeplayer = 0;
+		}
 	}
 
 

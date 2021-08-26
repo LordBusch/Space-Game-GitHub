@@ -10,6 +10,8 @@ import java.lang.Integer;
 
 
 public class ActionHandler implements ActionListener{
+
+	
 	
 	
 	public void actionPerformed(ActionEvent e) {
@@ -20,7 +22,13 @@ public class ActionHandler implements ActionListener{
 		JFrame frame = Main.frame;
 		
 		
-		if(e.getSource() == Main.button0) {
+		if(e.getSource() == Main.CreateGameButton) {
+			frame.remove(Main.pan1);
+			frame.add(Main.StartGamePanel);
+			frame.setVisible(true);
+		}
+
+		if(e.getSource() == Main.StartButton) {
 			System.out.println("Starting");
 			Main.Start = true;
 
@@ -43,23 +51,25 @@ public class ActionHandler implements ActionListener{
 			panPlanets.add(Main.textFieldAnglePlayer2);
 			panPlanets.add(Main.ShootButtonPlayer1);
 			panPlanets.add(Main.ShootButtonPlayer2);
-
+			panPlanets.add(Main.KillCounterPlayer1);
+			panPlanets.add(Main.KillCounterPlayer2);
 			panPlanets.add(Main.ResetGameButton);
 			
 			panPlanets.CalculateShip();
 			panPlanets.CalculatePlanets();
-			
-
+			panPlanets.CalculateBlackHole();
 			
 		
 		 
 			// Add panel new panel object to main frame and remove former obejct
-			frame.remove(Main.pan1);
+			frame.remove(Main.StartGamePanel);
 			frame.add(panPlanets);
 			frame.setVisible(true);
 				
 			
 		}
+		
+
 		
 
         if(e.getSource() == Main.AngleButtonPlayer1) {
@@ -106,10 +116,27 @@ public class ActionHandler implements ActionListener{
 		}
 
 		if(e.getSource() == Main.ResetGameButton) {
+			Main.Start = true;
 			panPlanets.CalculatePlanets();
 			panPlanets.CalculateShip();
+			//panPlanets.CalculateBlackHole();
 			frame.repaint();
+		}
+
+		if(e.getSource() == Main.StarWarsModeButton) {
+			Main.StarWarsMode = true;
+			Main.NormalMode = false;
+			Main.StarWarsModeLabel.setText("Activated");
+			Main.NormalModeLabel.setText("");
+		}
+
+		if(e.getSource() == Main.NormalModeButton) {
+			Main.NormalMode = true;
+			Main.StarWarsMode = false;
+			Main.NormalModeLabel.setText("Activated");
+			Main.StarWarsModeLabel.setText("");
 		}
 		
 	}
+
 }
