@@ -10,6 +10,8 @@ import java.lang.Integer;
 
 
 public class ActionHandler implements ActionListener{
+
+	
 	
 	
 	public void actionPerformed(ActionEvent e) {
@@ -20,46 +22,55 @@ public class ActionHandler implements ActionListener{
 		JFrame frame = Main.frame;
 		
 		
-		if(e.getSource() == Main.button0) {
-			System.out.println("Starting");
-			Main.Start = true;
+		if(e.getSource() == Main.CreateGameButton) {
+			frame.remove(Main.pan1);
+			frame.add(Main.StartGamePanel);
+			frame.setVisible(true);
+		}
 
-			//Convert String to Int (NumberOfPlanets)
-			Main.InputCountPlanets = Main.textFieldCountPlanets.getText();
-			int  InputNumberOfPlanets = Integer.parseInt(Main.InputCountPlanets);  
-			Calculate.numberOfPlanets = InputNumberOfPlanets;
+		if(e.getSource() == Main.StartButton) {
+			if (Main.StarWarsMode | Main.NormalMode) {
+				System.out.println("Starting");
+				Main.Start = true;
 
-			panPlanets.add(Main.SpeedButtonPlayer1);
-			panPlanets.add(Main.SpeedButtonPlayer2);
-			panPlanets.add(Main.AngleButtonPlayer1);
-			panPlanets.add(Main.AngleButtonPlayer2);
-			panPlanets.add(Main.LabelAnglePlayer1);
-			panPlanets.add(Main.LabelAnglePlayer2);
-			panPlanets.add(Main.LabelSpeedPlayer1);
-			panPlanets.add(Main.LabelSpeedPlayer2);
-			panPlanets.add(Main.textFieldSpeedPlayer1);
-			panPlanets.add(Main.textFieldSpeedPlayer2);
-			panPlanets.add(Main.textFieldAnglePlayer1);
-			panPlanets.add(Main.textFieldAnglePlayer2);
-			panPlanets.add(Main.ShootButtonPlayer1);
-			panPlanets.add(Main.ShootButtonPlayer2);
+				//Convert String to Int (NumberOfPlanets)
+				Main.InputCountPlanets = Main.textFieldCountPlanets.getText();
+				int  InputNumberOfPlanets = Integer.parseInt(Main.InputCountPlanets);  
+				Calculate.numberOfPlanets = InputNumberOfPlanets;
 
-			panPlanets.add(Main.ResetGameButton);
-			
-			panPlanets.CalculateShip();
-			panPlanets.CalculatePlanets();
-			
-
+				panPlanets.add(Main.SpeedButtonPlayer1);
+				panPlanets.add(Main.SpeedButtonPlayer2);
+				panPlanets.add(Main.AngleButtonPlayer1);
+				panPlanets.add(Main.AngleButtonPlayer2);
+				panPlanets.add(Main.LabelAnglePlayer1);
+				panPlanets.add(Main.LabelAnglePlayer2);
+				panPlanets.add(Main.LabelSpeedPlayer1);
+				panPlanets.add(Main.LabelSpeedPlayer2);
+				panPlanets.add(Main.textFieldSpeedPlayer1);
+				panPlanets.add(Main.textFieldSpeedPlayer2);
+				panPlanets.add(Main.textFieldAnglePlayer1);
+				panPlanets.add(Main.textFieldAnglePlayer2);
+				panPlanets.add(Main.ShootButtonPlayer1);
+				panPlanets.add(Main.ShootButtonPlayer2);
+				panPlanets.add(Main.KillCounterPlayer1);
+				panPlanets.add(Main.KillCounterPlayer2);
+				panPlanets.add(Main.ResetGameButton);
+				
+				panPlanets.CalculateShip();
+				panPlanets.CalculatePlanets();
+				panPlanets.CalculateBlackHole();
 			
 		
 		 
-			// Add panel new panel object to main frame and remove former obejct
-			frame.remove(Main.pan1);
-			frame.add(panPlanets);
-			frame.setVisible(true);
-				
+				// Add panel new panel object to main frame and remove former obejct
+				frame.remove(Main.StartGamePanel);
+				frame.add(panPlanets);
+				frame.setVisible(true);
+			}
 			
 		}
+		
+
 		
 
         if(e.getSource() == Main.AngleButtonPlayer1) {
@@ -106,10 +117,27 @@ public class ActionHandler implements ActionListener{
 		}
 
 		if(e.getSource() == Main.ResetGameButton) {
+			Main.Start = true;
 			panPlanets.CalculatePlanets();
 			panPlanets.CalculateShip();
+			//panPlanets.CalculateBlackHole();
 			frame.repaint();
+		}
+
+		if(e.getSource() == Main.StarWarsModeButton) {
+			Main.StarWarsMode = true;
+			Main.NormalMode = false;
+			Main.StarWarsModeLabel.setText("Activated");
+			Main.NormalModeLabel.setText("");
+		}
+
+		if(e.getSource() == Main.NormalModeButton) {
+			Main.NormalMode = true;
+			Main.StarWarsMode = false;
+			Main.NormalModeLabel.setText("Activated");
+			Main.StarWarsModeLabel.setText("");
 		}
 		
 	}
+
 }
