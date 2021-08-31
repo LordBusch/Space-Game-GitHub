@@ -55,6 +55,9 @@ public class Calculate extends JLabel {
 	public static double yvector;
 	public static String InputPic = "Space Game Planet 2.png";
 
+	private static double StarLocationX;
+	private static double StarLocationY;
+
 	//Create method for delay
 	public static void wait(int ms)
 	{
@@ -75,6 +78,15 @@ public class Calculate extends JLabel {
 		if (Main.Start | Main.Shoot) {
 			g.setColor(Color.black);
 			g.fillRect(0, 0, Main.PANEL_SIZE_X, Main.PANEL_SIZE_Y);
+			g.setColor(Color.white);
+			for (int i = 0; i < 100; i++) {
+				StarLocationX = Math.random() * Main.PANEL_SIZE_X;
+				StarLocationY = Math.random() * Main.PANEL_SIZE_Y;
+				int StarLocationXInt = (int) Math.round(StarLocationX);
+				int StarLocationYInt = (int) Math.round(StarLocationY);
+				
+				g.fillOval(StarLocationXInt, StarLocationYInt, 2, 2);
+			}
 			this.DrawPlanets(g);
 			this.DrawShip(g);
 			//this.DrawBlackHole(g);

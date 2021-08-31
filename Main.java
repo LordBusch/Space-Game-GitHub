@@ -2,8 +2,6 @@ import java.awt.*;
 import javax.swing.*;
 
 
-
-
 public class Main {
 	private static final int BUTTON_HEIGHT = 50;
 	public static final int PANEL_SIZE_X = 1600;
@@ -63,7 +61,8 @@ public class Main {
 	private final int CustomizeGameLabelLength = PANEL_SIZE_X / 2;
 	private final int CustomizeGameLabelHeigth = PANEL_SIZE_Y / 10;
 	private final int TaskBarY = 65;
-
+	Font fontHeading = new Font("Verdana", Font.PLAIN, PANEL_SIZE_Y / 12);
+	Font fontSubheadings = new Font("Verdana", Font.PLAIN, PANEL_SIZE_Y / 30);
 	
 	
 	
@@ -102,59 +101,48 @@ public class Main {
 		
 		// Create CreateGameButton
 		CreateGameButton = new JButton("Start");
-		CreateGameButton.setBounds(PANEL_SIZE_X / 2 - 100, PANEL_SIZE_Y / 6, 200, 100);
-		CreateGameButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		CreateGameButton.setBounds(PANEL_SIZE_X / 2 - 100, PANEL_SIZE_Y / 6, 300, 100);
+		CreateGameButton.setBackground(Color.black);
+		CreateGameButton.setForeground(Color.red);
+		CreateGameButton.setFont(fontHeading);
+		//CreateGameButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		CreateGameButton.addActionListener(handler);
-		CreateGameButton.setVisible(true);
-		CreateGameButton.setIcon(new ImageIcon("Frage1V3.png"));
-		CreateGameButton.setPressedIcon(new ImageIcon("Frage1V3Pressed.png"));
-		CreateGameButton.setRolloverIcon(new ImageIcon("Frage1V3Rollover.png"));
 		
 
-		ResetGameButton = new JButton("Reset Game");
-		ResetGameButton.setBounds(PANEL_SIZE_X / 2 - 50, 0, 100, BUTTON_HEIGHT);
+		ResetGameButton = new JButton("Reset");
+		ResetGameButton.setBounds(PANEL_SIZE_X / 2 - 75, 0, 150, BUTTON_HEIGHT);
 		ResetGameButton.addActionListener(handler);
+		ResetGameButton.setBackground(Color.black);
+		ResetGameButton.setForeground(Color.red);
+		ResetGameButton.setFont(fontSubheadings);
 
 		KillCounterPlayer1 = new JLabel(KillCounter1String);
-		KillCounterPlayer1.setBounds(PANEL_SIZE_X / 2 - 60, 0, 10, 50);
+		KillCounterPlayer1.setBounds(PANEL_SIZE_X / 2 - 110, 0, 50, 50);
 		KillCounterPlayer1.setForeground(Color.red);
-		KillCounterPlayer1.setVisible(true);
+		KillCounterPlayer1.setFont(fontSubheadings);
 
 		KillCounterPlayer2 = new JLabel(KillCounter2String);
-		KillCounterPlayer2.setBounds(PANEL_SIZE_X / 2 + 52, 0, 10, 50);
+		KillCounterPlayer2.setBounds(PANEL_SIZE_X / 2 + 85, 0, 50, 50);
 		KillCounterPlayer2.setForeground(Color.red);
-		KillCounterPlayer2.setVisible(true);
-
-/*
-		AngleButtonPlayer1 = new JButton("Angle");
-		AngleButtonPlayer1.setBounds(70, 0, 70, 30);
-		AngleButtonPlayer1.addActionListener(handler);
-		AngleButtonPlayer1.setVisible(true);
-*/		 
-
-		/*
-		// Create Button for Angle
-		Main.AngleButtonPlayer1 = new JButton("Angle");
-		Main.AngleButtonPlayer1.setBounds(70, 0, 70, 30);
-		Main.AngleButtonPlayer1.addActionListener(handler);
-
-        // Create Button for Speed
-		Main.SpeedButtonPlayer1 = new JButton("Speed");
-		Main.SpeedButtonPlayer1.setBounds(70, 30, 70, 30);
-		Main.SpeedButtonPlayer1.addActionListener(handler);
-*/
+		KillCounterPlayer2.setFont(fontSubheadings);
 
 		//menu player 1
 		ShootButtonPlayer1 = new JButton("Shoot");
 		ShootButtonPlayer1.setBounds(0, 60, 100, BUTTON_HEIGHT);
+		ShootButtonPlayer1.setBackground(Color.black);
+		ShootButtonPlayer1.setForeground(Color.red);
 		ShootButtonPlayer1.addActionListener(handler);
 
 		textFieldAnglePlayer1 = new JTextField();
 		textFieldAnglePlayer1.setBounds(0, 0, 70, 30);
+		textFieldAnglePlayer1.setBackground(Color.black);
+		textFieldAnglePlayer1.setForeground(Color.red);
 		
 
 		textFieldSpeedPlayer1 = new JTextField();
 		textFieldSpeedPlayer1.setBounds(0, 30, 70, 30);
+		textFieldSpeedPlayer1.setBackground(Color.black);
+		textFieldSpeedPlayer1.setForeground(Color.red);
 		
 
 		LabelAnglePlayer1 = new JLabel(TextForLabelAnglePlayer1);
@@ -173,10 +161,14 @@ public class Main {
 
 		SpeedButtonPlayer1 = new JButton("Speed");
 		SpeedButtonPlayer1.setBounds(70, 30, 70, 30);
+		SpeedButtonPlayer1.setBackground(Color.black);
+		SpeedButtonPlayer1.setForeground(Color.red);
 		SpeedButtonPlayer1.addActionListener(handler);
 
 		AngleButtonPlayer1 = new JButton("Angle");
 		AngleButtonPlayer1.setBounds(70, 0, 70, 30);
+		AngleButtonPlayer1.setBackground(Color.black);
+		AngleButtonPlayer1.setForeground(Color.red);
 		AngleButtonPlayer1.addActionListener(handler);
 		 
 
@@ -184,14 +176,20 @@ public class Main {
 		//menu player 2
 		ShootButtonPlayer2 = new JButton("Shoot");
 		ShootButtonPlayer2.setBounds(PANEL_SIZE_X - 100, 60, 100, BUTTON_HEIGHT);
+		ShootButtonPlayer2.setBackground(Color.black);
+		ShootButtonPlayer2.setForeground(Color.red);
 		ShootButtonPlayer2.addActionListener(handler);
 
 		textFieldAnglePlayer2 = new JTextField();
 		textFieldAnglePlayer2.setBounds(PANEL_SIZE_X - 210, 0, 70, 30);
+		textFieldAnglePlayer2.setBackground(Color.black);
+		textFieldAnglePlayer2.setForeground(Color.red);
 		
 
 		textFieldSpeedPlayer2 = new JTextField();
 		textFieldSpeedPlayer2.setBounds(PANEL_SIZE_X - 210, 30, 70, 30);
+		textFieldSpeedPlayer2.setBackground(Color.black);
+		textFieldSpeedPlayer2.setForeground(Color.red);
 		
 
 		LabelAnglePlayer2 = new JLabel(TextForLabelAnglePlayer1);
@@ -210,18 +208,21 @@ public class Main {
 
 		AngleButtonPlayer2 = new JButton("Angle");
 		AngleButtonPlayer2.setBounds(PANEL_SIZE_X - 140, 0, 70, 30);
+		AngleButtonPlayer2.setBackground(Color.black);
+		AngleButtonPlayer2.setForeground(Color.red);
 		AngleButtonPlayer2.addActionListener(handler);
 
 		SpeedButtonPlayer2 = new JButton("Speed");
 		SpeedButtonPlayer2.setBounds(PANEL_SIZE_X - 140, 30, 70, 30);
+		SpeedButtonPlayer2.setBackground(Color.black);
+		SpeedButtonPlayer2.setForeground(Color.red);
 		SpeedButtonPlayer2.addActionListener(handler);
 
 
 
 		//Create/Start Game Panel
 
-		Font fontHeading = new Font("Verdana", Font.PLAIN, PANEL_SIZE_Y / 12);
-		Font fontSubheadings = new Font("Verdana", Font.PLAIN, PANEL_SIZE_Y / 30);
+		
 
 		StartGamePanel = new JPanel();
 		StartGamePanel.setBackground(Color.black);
@@ -231,6 +232,7 @@ public class Main {
 		StartButton.setBounds(PANEL_SIZE_X / 2 - 220 / 2, PANEL_SIZE_Y - 75 - TaskBarY, 220, 75);
 		StartButton.setFont(fontSubheadings);
 		StartButton.setForeground(Color.red);
+		StartButton.setBackground(Color.black);
 		StartButton.addActionListener(handler);
 
 		textFieldCountPlanets = new JTextField();
@@ -238,6 +240,7 @@ public class Main {
 		textFieldCountPlanets.setBackground(Color.white);
 		textFieldCountPlanets.setForeground(Color.red);
 		textFieldCountPlanets.setFont(fontSubheadings);
+		textFieldCountPlanets.setBackground(Color.black);
 
 		LabelCountPlanets = new JLabel("Planets");
 		LabelCountPlanets.setBounds(PANEL_SIZE_X / 10 + 100, PANEL_SIZE_Y / 5, 120, 40);
@@ -258,6 +261,7 @@ public class Main {
 		textFieldPossibilityBH.setBounds(PANEL_SIZE_X / 10, PANEL_SIZE_Y / 5 + PANEL_SIZE_Y / 10, 100, 40);
 		textFieldPossibilityBH.setForeground(Color.red);
 		textFieldPossibilityBH.setFont(fontSubheadings);
+		textFieldPossibilityBH.setBackground(Color.black);
 
 		LabelPossibilityBH = new JLabel();
 		LabelPossibilityBH.setText("Possibility of black hole (percent)");
