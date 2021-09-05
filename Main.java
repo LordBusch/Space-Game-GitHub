@@ -4,8 +4,8 @@ import javax.swing.*;
 
 public class Main {
 	private static final int BUTTON_HEIGHT = 50;
-	public static final int PANEL_SIZE_X = 1600;
-	public static final int PANEL_SIZE_Y = 900;
+	public static final int PANEL_SIZE_X = 1920;
+	public static final int PANEL_SIZE_Y = 1080;
 	public static final int MAX_PLANET_RADIUS = 100;
 	public static final int MIN_PLANET_RADIUS = 20;
 	public static String KillCounter1String = "0";
@@ -15,7 +15,7 @@ public class Main {
 	public static int KillCount1;
 	public static int KillCount2;
 	public static int activeplayer = 0;
-	public static String InputCountPlanets;
+	public static String InputCountPlanets = "0";
 	public static boolean Shoot = false;
 	public static boolean Start = false;
     public static String InputAnglePlayer1;
@@ -229,7 +229,7 @@ public class Main {
 		StartGamePanel.setLayout(null);
 
 		StartButton = new JButton("Start Game");
-		StartButton.setBounds(PANEL_SIZE_X / 2 - 220 / 2, PANEL_SIZE_Y - 75 - TaskBarY, 220, 75);
+		StartButton.setBounds(PANEL_SIZE_X / 2 - 250 / 2, PANEL_SIZE_Y - 75 - TaskBarY, 250, 75);
 		StartButton.setFont(fontSubheadings);
 		StartButton.setForeground(Color.red);
 		StartButton.setBackground(Color.black);
@@ -243,7 +243,7 @@ public class Main {
 		textFieldCountPlanets.setBackground(Color.black);
 
 		LabelCountPlanets = new JLabel("Planets");
-		LabelCountPlanets.setBounds(PANEL_SIZE_X / 10 + 100, PANEL_SIZE_Y / 5, 120, 40);
+		LabelCountPlanets.setBounds(PANEL_SIZE_X / 10 + 100, PANEL_SIZE_Y / 5, 200, 40);
 		LabelCountPlanets.setFont(fontSubheadings);
 		LabelCountPlanets.setForeground(Color.red);
 
@@ -265,12 +265,12 @@ public class Main {
 
 		LabelPossibilityBH = new JLabel();
 		LabelPossibilityBH.setText("Possibility of black hole (percent)");
-		LabelPossibilityBH.setBounds(PANEL_SIZE_X / 10 + 100, PANEL_SIZE_Y / 5 + PANEL_SIZE_Y / 10, 550, 40);
+		LabelPossibilityBH.setBounds(PANEL_SIZE_X / 10 + 100, PANEL_SIZE_Y / 5 + PANEL_SIZE_Y / 10, 800, 40);
 		LabelPossibilityBH.setFont(fontSubheadings);
 		LabelPossibilityBH.setForeground(Color.red);
 
 		StarWarsModeButton = new JButton("Star Wars");
-		StarWarsModeButton.setBounds((PANEL_SIZE_X / 5) * 3, PANEL_SIZE_Y / 5 + PANEL_SIZE_Y / 10, 200, 50);
+		StarWarsModeButton.setBounds((PANEL_SIZE_X / 5) * 3, PANEL_SIZE_Y / 5 + PANEL_SIZE_Y / 10, 230, 50);
 		StarWarsModeButton.setBackground(Color.black);
 		StarWarsModeButton.setFont(fontSubheadings);
 		StarWarsModeButton.setForeground(Color.red);
@@ -283,7 +283,7 @@ public class Main {
 		StarWarsModeLabel.setFont(fontSubheadings);
 
 		NormalModeButton = new JButton("Normal");
-		NormalModeButton.setBounds((PANEL_SIZE_X / 5) * 3 + 250, PANEL_SIZE_Y / 5 + PANEL_SIZE_Y / 10, 200, 50);
+		NormalModeButton.setBounds((PANEL_SIZE_X / 5) * 3 + 250, PANEL_SIZE_Y / 5 + PANEL_SIZE_Y / 10, 230, 50);
 		NormalModeButton.setBackground(Color.black);
 		NormalModeButton.setFont(fontSubheadings);
 		NormalModeButton.setForeground(Color.red);
@@ -296,7 +296,7 @@ public class Main {
 		NormalModeLabel.setFont(fontSubheadings);
 
 		LabelModes = new JLabel("Modes");
-		LabelModes.setBounds((PANEL_SIZE_X / 5) * 3 + 100, PANEL_SIZE_Y / 5, 250, 70);
+		LabelModes.setBounds((PANEL_SIZE_X / 5) * 3 + 100, PANEL_SIZE_Y / 5, 350, 70);
 		LabelModes.setBackground(Color.black);
 		LabelModes.setForeground(Color.red);
 		LabelModes.setFont(fontHeading);

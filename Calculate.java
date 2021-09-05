@@ -55,8 +55,8 @@ public class Calculate extends JLabel {
 	public static double yvector;
 	public static String InputPic = "Space Game Planet 2.png";
 
-	private static double StarLocationX;
-	private static double StarLocationY;
+	private static double[] StarLocationX = new double[100];
+	private static double[] StarLocationY = new double[100];
 
 	//Create method for delay
 	public static void wait(int ms)
@@ -75,15 +75,15 @@ public class Calculate extends JLabel {
 
 
 	public void paintComponent(Graphics g) {
-		if (Main.Start | Main.Shoot) {
+		if (Main.Start) {
 			g.setColor(Color.black);
 			g.fillRect(0, 0, Main.PANEL_SIZE_X, Main.PANEL_SIZE_Y);
 			g.setColor(Color.white);
 			for (int i = 0; i < 100; i++) {
-				StarLocationX = Math.random() * Main.PANEL_SIZE_X;
-				StarLocationY = Math.random() * Main.PANEL_SIZE_Y;
-				int StarLocationXInt = (int) Math.round(StarLocationX);
-				int StarLocationYInt = (int) Math.round(StarLocationY);
+				StarLocationX[i] = Math.random() * Main.PANEL_SIZE_X;
+				StarLocationY[i] = Math.random() * Main.PANEL_SIZE_Y;
+				int StarLocationXInt = (int) Math.round(StarLocationX[i]);
+				int StarLocationYInt = (int) Math.round(StarLocationY[i]);
 				
 				g.fillOval(StarLocationXInt, StarLocationYInt, 2, 2);
 			}
@@ -94,6 +94,16 @@ public class Calculate extends JLabel {
 		}
 		
 		if(Main.Shoot) {
+			g.setColor(Color.black);
+			g.fillRect(0, 0, Main.PANEL_SIZE_X, Main.PANEL_SIZE_Y);
+			this.DrawPlanets(g);
+			this.DrawShip(g);
+			for (int i = 0; i < 100; i++) {
+				int StarLocationXInt = (int) Math.round(StarLocationX[i]);
+				int StarLocationYInt = (int) Math.round(StarLocationY[i]);
+				g.setColor(Color.white);
+				g.fillOval(StarLocationXInt, StarLocationYInt, 2, 2);
+			}
 			this.DrawShot(g);
 			this.DrawExplosion(g);
 			

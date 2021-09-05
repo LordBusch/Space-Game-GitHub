@@ -30,9 +30,11 @@ public class ActionHandler implements ActionListener{
 
 		if(e.getSource() == Main.StartButton) {
 			if (Main.StarWarsMode | Main.NormalMode) {
+				
 				System.out.println("Starting");
 				Main.Start = true;
-
+				
+				
 				//Convert String to Int (NumberOfPlanets)
 				Main.InputCountPlanets = Main.textFieldCountPlanets.getText();
 				int  InputNumberOfPlanets = Integer.parseInt(Main.InputCountPlanets);  
@@ -66,6 +68,8 @@ public class ActionHandler implements ActionListener{
 				frame.remove(Main.StartGamePanel);
 				frame.add(panPlanets);
 				frame.setVisible(true);
+					
+				
 			}
 			
 		}
