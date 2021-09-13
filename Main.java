@@ -35,6 +35,8 @@ public class Main {
 	public static JButton StartButton;
 	public static JButton StarWarsModeButton;
 	public static JButton NormalModeButton;
+	public static JButton CloseWindowButton;
+	public static JButton MainMenuButton;
 	public static JPanel pan1;
 	public static JPanel StartGamePanel;
 	public static JFrame frame;
@@ -94,7 +96,7 @@ public class Main {
 		frame.setExtendedState(frame.MAXIMIZED_BOTH);
 
 
-		
+		//Main Menu Panel
 		
 		// Action handler
 		handler = new ActionHandler();
@@ -107,7 +109,15 @@ public class Main {
 		CreateGameButton.setFont(fontHeading);
 		//CreateGameButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		CreateGameButton.addActionListener(handler);
-		
+
+		CloseWindowButton = new JButton("Close");
+		CloseWindowButton.setBounds(PANEL_SIZE_X / 2 - 100, PANEL_SIZE_Y / 6 + PANEL_SIZE_Y / 3, 300, 100);
+		CloseWindowButton.setForeground(Color.red);
+		CloseWindowButton.setBackground(Color.black);
+		CloseWindowButton.setFont(fontHeading);
+		CloseWindowButton.addActionListener(handler);
+
+		//Game Interface
 
 		ResetGameButton = new JButton("Reset");
 		ResetGameButton.setBounds(PANEL_SIZE_X / 2 - 75, 0, 150, BUTTON_HEIGHT);
@@ -115,6 +125,13 @@ public class Main {
 		ResetGameButton.setBackground(Color.black);
 		ResetGameButton.setForeground(Color.red);
 		ResetGameButton.setFont(fontSubheadings);
+
+		MainMenuButton = new JButton("Main Menu");
+		MainMenuButton.setBounds(PANEL_SIZE_X / 2 - 75, BUTTON_HEIGHT, 150, BUTTON_HEIGHT);
+		MainMenuButton.setBackground(Color.black);
+		MainMenuButton.setForeground(Color.red);
+		MainMenuButton.setFont(MainMenuButton.getFont().deriveFont((float) 22));
+		MainMenuButton.addActionListener(handler);
 
 		KillCounterPlayer1 = new JLabel(KillCounter1String);
 		KillCounterPlayer1.setBounds(PANEL_SIZE_X / 2 - 110, 0, 50, 50);
@@ -323,6 +340,7 @@ public class Main {
 		
 		
 		pan1.add(CreateGameButton);
+		pan1.add(CloseWindowButton);
 		
 		// Add main panel to frame and make visible
 		frame.add(pan1);
