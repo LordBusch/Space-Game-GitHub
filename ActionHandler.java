@@ -21,20 +21,41 @@ public class ActionHandler implements ActionListener{
 		Calculate panPlanets = new Calculate();
 		JFrame frame = Main.frame;
 		
+
 		
 		if(e.getSource() == Main.CreateGameButton) {
 			frame.remove(Main.pan1);
 			frame.add(Main.StartGamePanel);
 			frame.setVisible(true);
+			frame.repaint();
+		}
+
+		if(e.getSource() == Main.CloseWindowButton) {
+			System.exit(0);
 		}
 
 		if(e.getSource() == Main.StartButton) {
+			
 			if (Main.StarWarsMode | Main.NormalMode) {
-				
 				System.out.println("Starting");
 				Main.Start = true;
-				
-				
+
+				Main.activeplayer = 0;
+				Main.KillCount1 = 0;
+				Main.KillCount2 = 0;
+				Main.KillCounterPlayer1.setText("0");
+				Main.KillCounterPlayer2.setText("0");
+				Calculate.numberOfPlanets = 0;
+
+				Main.LabelAnglePlayer1.setText("");
+				Main.InputAnglePlayer1 = "0";
+				Main.LabelAnglePlayer2.setText("");
+				Main.InputAnglePlayer1 = "0";
+				Main.LabelSpeedPlayer1.setText("");
+				Main.InputSpeedPlayer1 = "0";
+				Main.LabelSpeedPlayer2.setText("");
+				Main.InputSpeedPlayer1 = "0";
+
 				//Convert String to Int (NumberOfPlanets)
 				Main.InputCountPlanets = Main.textFieldCountPlanets.getText();
 				int  InputNumberOfPlanets = Integer.parseInt(Main.InputCountPlanets);  
@@ -57,25 +78,39 @@ public class ActionHandler implements ActionListener{
 				panPlanets.add(Main.KillCounterPlayer1);
 				panPlanets.add(Main.KillCounterPlayer2);
 				panPlanets.add(Main.ResetGameButton);
+				panPlanets.add(Main.MainMenuButton);
 				
+				System.out.println("DEBUG - Before calling calc methods");
 				panPlanets.CalculateShip();
 				panPlanets.CalculatePlanets();
 				panPlanets.CalculateBlackHole();
-			
+				System.out.println("DEBUG - After calling calc methods");
 		
 		 
 				// Add panel new panel object to main frame and remove former obejct
 				frame.remove(Main.StartGamePanel);
 				frame.add(panPlanets);
 				frame.setVisible(true);
-					
+				frame.repaint();
+				System.out.println("DEBUG - After repaint");
+				
 				
 			}
 			
 		}
 		
 
-		
+		if(e.getSource() == Main.MainMenuButton) {
+			frame.remove(panPlanets);
+			panPlanets.setVisible(false);
+			frame.getContentPane().removeAll();
+
+			frame.add(Main.pan1);
+			Main.pan1.setVisible(true);
+			frame.repaint();
+			frame.setVisible(true);
+		}
+
 
         if(e.getSource() == Main.AngleButtonPlayer1) {
 			Main.InputAnglePlayer1 = Main.textFieldAnglePlayer1.getText();

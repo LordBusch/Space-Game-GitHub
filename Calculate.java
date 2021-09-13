@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
@@ -32,11 +31,9 @@ public class Calculate extends JLabel {
 	public static boolean isColliding;
 	public static int MaxLengthShotSuper = 1500;
 	public static int MaxLengthShot = 1500;
-	public static int xPlanetPic = 840;
-	public static int yPlanetPic = 859;
 	public static double xshot;
 	public static double yshot;
-	public static int numberOfPlanets;
+	public static int numberOfPlanets = 0;
 	public static int[] shot_xpos = new int[MaxLengthShot];
 	public static int[] shot_ypos = new int[MaxLengthShot];
 	public static int CountTillColision;
@@ -73,8 +70,8 @@ public class Calculate extends JLabel {
 
 	
 
-
 	public void paintComponent(Graphics g) {
+		System.out.println("DEBUG - paintComponent");
 		if (Main.Start) {
 			g.setColor(Color.black);
 			g.fillRect(0, 0, Main.PANEL_SIZE_X, Main.PANEL_SIZE_Y);
@@ -179,7 +176,7 @@ public class Calculate extends JLabel {
 
 		// Draw planets
 		for (int i = 0; i < numberOfPlanets; i++) {
-			System.out.format("Hallo Planet %d\n", i);
+			System.out.format("Calculated Planet " + i);
 			//System.out.println(randomNumber[i]);
 			randomNumber[i] = Math.random();
 			System.out.println(randomNumber[i]);
@@ -441,11 +438,12 @@ public class Calculate extends JLabel {
 				//PositionCorrectionShot = 10;
 				break;
 			}
-			//wait(10);
-			//repaint();
+			
 			// Draw shots position
 			g.setColor(Color.red);
 			g.fillOval((int)(shot_xpos[i] - PositionCorrectionShot), (int)(shot_ypos[i] - PositionCorrectionShot), SizeShotCircle, SizeShotCircle);
+			//wait(10);
+			//repaint();
 		}
 	}
 
