@@ -50,7 +50,7 @@ public class Calculate extends JLabel {
 	public static int NumberShip;
 	public static double xvector;
 	public static double yvector;
-	public static String InputPic = "Space Game Planet 2.png";
+	public static String InputPic = "images/Space Game Planet 2.png";
 
 	private static double[] StarLocationX = new double[100];
 	private static double[] StarLocationY = new double[100];
@@ -121,7 +121,7 @@ public class Calculate extends JLabel {
 	public void DrawShip(Graphics g) {
 		for (int i = 0; i < 2; i++) {
 				//PNG left side
-				ImageIcon SpaceShipIconLeft = new ImageIcon("spaceship-right.png");
+				ImageIcon SpaceShipIconLeft = new ImageIcon("images/spaceship-right.png");
 				Image SpaceShipImgLeftImage = SpaceShipIconLeft.getImage();
 				Image resizedSpaceShipImgLeft = SpaceShipImgLeftImage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
 				ImageIcon scaledSpaceShipIconLeft = new ImageIcon(resizedSpaceShipImgLeft);
@@ -130,7 +130,7 @@ public class Calculate extends JLabel {
 				scaledSpaceShipIconLeft.getIconHeight(),
 				BufferedImage.TYPE_INT_RGB);
 				//PNG right side
-				ImageIcon SpaceShipIconRight = new ImageIcon("spaceship-left.png");
+				ImageIcon SpaceShipIconRight = new ImageIcon("images/spaceship-left.png");
 				Image SpaceShipImgRightImage = SpaceShipIconRight.getImage();
 				Image resizedSpaceShipImgRight = SpaceShipImgRightImage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
 				ImageIcon scaledSpaceShipIconRight = new ImageIcon(resizedSpaceShipImgRight);
@@ -244,18 +244,18 @@ public class Calculate extends JLabel {
 			
 			if (Main.StarWarsMode) {
 				if (randomNumber[i] < 0.5) {
-					InputPic = "Endor.png";
+					InputPic = "images/Endor.png";
 				}
 				if (randomNumber[i] > 0.5) {
-					InputPic = "DeathStar2.png";
+					InputPic = "images/DeathStar2.png";
 				}
 			}
 			if (Main.NormalMode) {
 				if (randomNumber[i] < 0.5) {
-					InputPic = "Space Game Planet 2.png";
+					InputPic = "images/Space Game Planet 2.png";
 				}
 				if (randomNumber[i] > 0.5) {
-					InputPic = "jupiter.png";
+					InputPic = "images/jupiter.png";
 				}
 			}
 			
@@ -284,7 +284,7 @@ public class Calculate extends JLabel {
 	}
 
 	public void DrawBlackHole(Graphics g) {
-		ImageIcon BlackHoleIcon = new ImageIcon("black hole logo.png");
+		ImageIcon BlackHoleIcon = new ImageIcon("images/black hole logo.png");
 		Image BlackHoleImg = BlackHoleIcon.getImage();
 
 		Image resizedBlackHoleImg = BlackHoleImg.getScaledInstance(Size_BlackHole_X, Size_BlackHole_Y, java.awt.Image.SCALE_SMOOTH);
@@ -449,7 +449,7 @@ public class Calculate extends JLabel {
 
 	public void DrawExplosion(Graphics g) {
 		//Load Explosion PNG
-		ImageIcon ExplosionIcon = new ImageIcon("Explosion Image 2.png");
+		ImageIcon ExplosionIcon = new ImageIcon("images/Explosion Image 2.png");
 		Image ExplosionImg = ExplosionIcon.getImage();
 
 		Image resizedExplosionImg = ExplosionImg.getScaledInstance(SizeExplosionPic_X, SizeExplosionPic_Y, java.awt.Image.SCALE_SMOOTH);

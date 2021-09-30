@@ -84,7 +84,7 @@ public class Main {
 		
 		
 		frame = new JFrame ("Space Game");
-		ImageIcon image = new ImageIcon("Rakete Icon.png");
+		ImageIcon image = new ImageIcon("images/Rakete Icon.png");
 		frame.setIconImage(image.getImage());
 		frame.setSize(PANEL_SIZE_X, PANEL_SIZE_Y);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,6 +94,7 @@ public class Main {
 		frame.setBackground(Color.BLACK);
 		frame.setIconImage(image.getImage());
 		frame.setExtendedState(frame.MAXIMIZED_BOTH);
+		frame.setUndecorated(true);
 
 
 		//Main Menu Panel
