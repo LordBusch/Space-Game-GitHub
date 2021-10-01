@@ -68,6 +68,10 @@ public class Calculate extends JLabel {
 		}
 	}
 
+	Calculate() {
+		this.setSize(Main.PANEL_SIZE_X, Main.PANEL_SIZE_Y);
+	}
+
 	
 
 	public void paintComponent(Graphics g) {

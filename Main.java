@@ -18,13 +18,15 @@ public class Main {
 	public static String InputCountPlanets = "0";
 	public static boolean Shoot = false;
 	public static boolean Start = false;
+	public static boolean GameActive = false;
     public static String InputAnglePlayer1;
 	public static String InputAnglePlayer2;
     public static String InputSpeedPlayer1;
 	public static String InputSpeedPlayer2;
 	public static String TextForLabelAnglePlayer1;
 	public static String TextForLabelSpeedPlayer1;
-	public static JButton CreateGameButton;
+	public static JButton FirstGameModeButton;
+	public static JButton SecondGameModeButton;
 	public static JButton ResetGameButton;
 	public static JButton ShootButtonPlayer1;
 	public static JButton ShootButtonPlayer2;
@@ -32,13 +34,15 @@ public class Main {
 	public static JButton AngleButtonPlayer2;
     public static JButton SpeedButtonPlayer1;
 	public static JButton SpeedButtonPlayer2;
-	public static JButton StartButton;
+	public static JButton FirstStartButton;
 	public static JButton StarWarsModeButton;
 	public static JButton NormalModeButton;
 	public static JButton CloseWindowButton;
 	public static JButton MainMenuButton;
+	public static JButton GameModeButton;
 	public static JPanel pan1;
 	public static JPanel StartGamePanel;
+	//public static JPanel GameModePanel;
 	public static JFrame frame;
     public static JTextField textFieldAnglePlayer1;
 	public static JTextField textFieldAnglePlayer2;
@@ -80,6 +84,9 @@ public class Main {
 	public void gui() {
 		
 		
+		// Action handler
+		handler = new ActionHandler();
+		KeyHandler khandler = new KeyHandler();
 		
 		
 		
@@ -95,21 +102,30 @@ public class Main {
 		frame.setIconImage(image.getImage());
 		frame.setExtendedState(frame.MAXIMIZED_BOTH);
 		frame.setUndecorated(true);
+		frame.setLayout(null);
+		frame.addKeyListener(khandler);
+        frame.setFocusable(true);
 
 
 		//Main Menu Panel
 		
-		// Action handler
-		handler = new ActionHandler();
 		
-		// Create CreateGameButton
-		CreateGameButton = new JButton("Start");
-		CreateGameButton.setBounds(PANEL_SIZE_X / 2 - 100, PANEL_SIZE_Y / 6, 300, 100);
-		CreateGameButton.setBackground(Color.black);
-		CreateGameButton.setForeground(Color.red);
-		CreateGameButton.setFont(fontHeading);
-		//CreateGameButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		CreateGameButton.addActionListener(handler);
+		
+		// Create FirstGameModeButton
+		FirstGameModeButton = new JButton("Play");
+		FirstGameModeButton.setBounds(PANEL_SIZE_X / 20, PANEL_SIZE_Y / 6, 300, 100);
+		FirstGameModeButton.setBackground(Color.black);
+		FirstGameModeButton.setForeground(Color.red);
+		FirstGameModeButton.setFont(fontHeading);
+		//FirstGameModeButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		FirstGameModeButton.addActionListener(handler);
+
+		SecondGameModeButton = new JButton("Play");
+		SecondGameModeButton.setBounds(PANEL_SIZE_X / 20, PANEL_SIZE_Y / 2 + PANEL_SIZE_Y / 4, 300, 100);
+		SecondGameModeButton.setBackground(Color.black);
+		SecondGameModeButton.setForeground(Color.red);
+		SecondGameModeButton.setFont(fontHeading);
+		SecondGameModeButton.addActionListener(handler);
 
 		CloseWindowButton = new JButton("Close");
 		CloseWindowButton.setBounds(PANEL_SIZE_X / 2 - 100, PANEL_SIZE_Y / 6 + PANEL_SIZE_Y / 3, 300, 100);
@@ -118,17 +134,31 @@ public class Main {
 		CloseWindowButton.setFont(fontHeading);
 		CloseWindowButton.addActionListener(handler);
 
+		/*
+		//Game Mode Panel
+		GameModePanel = new JPanel();
+		GameModePanel.setBackground(Color.black);
+		GameModePanel.setLayout(null);
+		*/
+
+		GameModeButton = new JButton("Start");
+		GameModeButton.setBounds(PANEL_SIZE_X / 2 - 100, PANEL_SIZE_Y / 6, 300, 100);
+		GameModeButton.setBackground(Color.black);
+		GameModeButton.setForeground(Color.red);
+		GameModeButton.setFont(fontHeading);
+		GameModeButton.addActionListener(handler);
+
 		//Game Interface
 
 		ResetGameButton = new JButton("Reset");
-		ResetGameButton.setBounds(PANEL_SIZE_X / 2 - 75, 0, 150, BUTTON_HEIGHT);
+		ResetGameButton.setBounds(PANEL_SIZE_X / 2 - 75, BUTTON_HEIGHT, 150, BUTTON_HEIGHT);
 		ResetGameButton.addActionListener(handler);
 		ResetGameButton.setBackground(Color.black);
 		ResetGameButton.setForeground(Color.red);
 		ResetGameButton.setFont(fontSubheadings);
 
 		MainMenuButton = new JButton("Main Menu");
-		MainMenuButton.setBounds(PANEL_SIZE_X / 2 - 75, BUTTON_HEIGHT, 150, BUTTON_HEIGHT);
+		MainMenuButton.setBounds(PANEL_SIZE_X / 2 - 75, 0, 150, BUTTON_HEIGHT);
 		MainMenuButton.setBackground(Color.black);
 		MainMenuButton.setForeground(Color.red);
 		MainMenuButton.setFont(MainMenuButton.getFont().deriveFont((float) 22));
@@ -245,13 +275,14 @@ public class Main {
 		StartGamePanel = new JPanel();
 		StartGamePanel.setBackground(Color.black);
 		StartGamePanel.setLayout(null);
+		StartGamePanel.setSize(PANEL_SIZE_X, PANEL_SIZE_Y);
 
-		StartButton = new JButton("Start Game");
-		StartButton.setBounds(PANEL_SIZE_X / 2 - 250 / 2, PANEL_SIZE_Y - 75 - TaskBarY, 250, 75);
-		StartButton.setFont(fontSubheadings);
-		StartButton.setForeground(Color.red);
-		StartButton.setBackground(Color.black);
-		StartButton.addActionListener(handler);
+		FirstStartButton = new JButton("Play");
+		FirstStartButton.setBounds(PANEL_SIZE_X / 2 - 250 / 2, PANEL_SIZE_Y - 75 - TaskBarY, 250, 75);
+		FirstStartButton.setFont(fontSubheadings);
+		FirstStartButton.setForeground(Color.red);
+		FirstStartButton.setBackground(Color.black);
+		FirstStartButton.addActionListener(handler);
 
 		textFieldCountPlanets = new JTextField();
 		textFieldCountPlanets.setBounds(PANEL_SIZE_X / 10, PANEL_SIZE_Y / 5, 100, 40);
@@ -325,7 +356,7 @@ public class Main {
 		StartGamePanel.add(CustomizeGameLabel);
 		StartGamePanel.add(textFieldCountPlanets);
 		StartGamePanel.add(LabelCountPlanets);
-		StartGamePanel.add(StartButton);
+		StartGamePanel.add(FirstStartButton);
 		StartGamePanel.add(LabelPossibilityBH);
 		StartGamePanel.add(textFieldPossibilityBH);
 		StartGamePanel.add(StarWarsModeButton);
@@ -336,12 +367,15 @@ public class Main {
 
 		// Create main panel
 		pan1 = new JPanel();
+		pan1.setBounds(0, 0, PANEL_SIZE_X, PANEL_SIZE_Y);
 		pan1.setBackground(Color.black);
 		pan1.setLayout(null); // set to x,y coordinates (0,0) is upper left
 		
 		
-		pan1.add(CreateGameButton);
+		pan1.add(GameModeButton);
 		pan1.add(CloseWindowButton);
+
+		//GameModePanel.add(FirstGameModeButton);
 		
 		// Add main panel to frame and make visible
 		frame.add(pan1);

@@ -17,15 +17,52 @@ public class ActionHandler implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 
 		System.out.println("- Called actionPerformed() -");
-		 
+		
+		GameModes GameModePanel = new GameModes();
+		SecondGameMode panSecondGameMode = new SecondGameMode();
 		Calculate panPlanets = new Calculate();
 		JFrame frame = Main.frame;
+		KeyHandler khandler = new KeyHandler();
 		
+		if(e.getSource() == Main.GameModeButton) {
+			GameModes.GameModesActive = true;
 
-		
-		if(e.getSource() == Main.CreateGameButton) {
+			GameModePanel.add(Main.FirstGameModeButton);
+			GameModePanel.add(Main.SecondGameModeButton);
+			GameModePanel.addKeyListener(khandler);
+
 			frame.remove(Main.pan1);
+			frame.add(GameModePanel);
+			frame.setVisible(true);
+			frame.repaint();
+		}
+		
+		if(e.getSource() == Main.FirstGameModeButton) {
+			GameModes.GameModesActive = false;
+			GameModePanel.remove(Main.FirstGameModeButton);
+			GameModePanel.remove(Main.SecondGameModeButton);
+			Main.FirstGameModeButton.setVisible(false);
+			Main.SecondGameModeButton.setVisible(false);
+			frame.remove(GameModePanel);
+			GameModePanel.setVisible(false);
+			//frame.removeAll();
 			frame.add(Main.StartGamePanel);
+			frame.setVisible(true);
+			frame.repaint();
+		}
+
+		if(e.getSource() == Main.SecondGameModeButton) {
+			Main.GameActive = true;
+			GameModes.GameModesActive = false;
+
+			GameModePanel.remove(Main.FirstGameModeButton);
+			GameModePanel.remove(Main.SecondGameModeButton);
+			Main.FirstGameModeButton.setVisible(false);
+			Main.SecondGameModeButton.setVisible(false);
+			frame.remove(GameModePanel);
+			GameModePanel.setVisible(false);
+			panSecondGameMode.add(Main.MainMenuButton);
+			frame.add(panSecondGameMode);
 			frame.setVisible(true);
 			frame.repaint();
 		}
@@ -34,7 +71,7 @@ public class ActionHandler implements ActionListener{
 			System.exit(0);
 		}
 
-		if(e.getSource() == Main.StartButton) {
+		if(e.getSource() == Main.FirstStartButton) {
 			
 			if (Main.StarWarsMode | Main.NormalMode) {
 				System.out.println("Starting");
@@ -85,7 +122,6 @@ public class ActionHandler implements ActionListener{
 				panPlanets.CalculatePlanets();
 				panPlanets.CalculateBlackHole();
 				System.out.println("DEBUG - After calling calc methods");
-		
 		 
 				// Add panel new panel object to main frame and remove former obejct
 				frame.remove(Main.StartGamePanel);
@@ -93,17 +129,22 @@ public class ActionHandler implements ActionListener{
 				frame.setVisible(true);
 				frame.repaint();
 				System.out.println("DEBUG - After repaint");
-				
-				
 			}
 			
 		}
 		
 
 		if(e.getSource() == Main.MainMenuButton) {
+			Main.GameActive = false;
+			Main.FirstGameModeButton.setVisible(true);
+			Main.SecondGameModeButton.setVisible(true);
+
 			frame.remove(panPlanets);
 			panPlanets.setVisible(false);
 			frame.getContentPane().removeAll();
+
+			SecondGameMode.xposship = Main.PANEL_SIZE_X / 2 - 25;
+			SecondGameMode.yposship = Main.PANEL_SIZE_Y - 50;
 
 			frame.add(Main.pan1);
 			Main.pan1.setVisible(true);
@@ -177,6 +218,7 @@ public class ActionHandler implements ActionListener{
 			Main.StarWarsModeLabel.setText("");
 		}
 		
+		new KeyHandler();
 	}
 
 }
