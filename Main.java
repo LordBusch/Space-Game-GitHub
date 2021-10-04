@@ -128,7 +128,7 @@ public class Main {
 		SecondGameModeButton.addActionListener(handler);
 
 		CloseWindowButton = new JButton("Close");
-		CloseWindowButton.setBounds(PANEL_SIZE_X / 2 - 100, PANEL_SIZE_Y / 6 + PANEL_SIZE_Y / 3, 300, 100);
+		CloseWindowButton.setBounds(PANEL_SIZE_X / 2 - 150, PANEL_SIZE_Y / 6 + PANEL_SIZE_Y / 3, 300, 100);
 		CloseWindowButton.setForeground(Color.red);
 		CloseWindowButton.setBackground(Color.black);
 		CloseWindowButton.setFont(fontHeading);
@@ -142,7 +142,7 @@ public class Main {
 		*/
 
 		GameModeButton = new JButton("Start");
-		GameModeButton.setBounds(PANEL_SIZE_X / 2 - 100, PANEL_SIZE_Y / 6, 300, 100);
+		GameModeButton.setBounds(PANEL_SIZE_X / 2 - 150, PANEL_SIZE_Y / 6, 300, 100);
 		GameModeButton.setBackground(Color.black);
 		GameModeButton.setForeground(Color.red);
 		GameModeButton.setFont(fontHeading);
@@ -278,7 +278,7 @@ public class Main {
 		StartGamePanel.setSize(PANEL_SIZE_X, PANEL_SIZE_Y);
 
 		FirstStartButton = new JButton("Play");
-		FirstStartButton.setBounds(PANEL_SIZE_X / 2 - 250 / 2, PANEL_SIZE_Y - 75 - TaskBarY, 250, 75);
+		FirstStartButton.setBounds(PANEL_SIZE_X / 2 - 125, PANEL_SIZE_Y - 75 - TaskBarY, 250, 75);
 		FirstStartButton.setFont(fontSubheadings);
 		FirstStartButton.setForeground(Color.red);
 		FirstStartButton.setBackground(Color.black);
