@@ -6,6 +6,16 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeUnit;
 import java.awt.Toolkit;
 import java.awt.*;
+import java.awt.Component;
+import java.awt.Graphics2D;
+import java.awt.Graphics;
+import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
+import javax.swing.Icon;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 
 public class SecondGameMode extends JPanel{
     public static int xposship = Main.PANEL_SIZE_X / 2 - 25;
@@ -14,6 +24,8 @@ public class SecondGameMode extends JPanel{
     public static int[] yposAsteroid = new int[1000000];
     public static int CurrentAsteroid;
     public static int CountDrawAsteroid = 10;
+    public static int RotationShip = 0;
+    public static double Alpha;
 
     SecondGameMode() {
         this.setSize(Main.PANEL_SIZE_X, Main.PANEL_SIZE_Y);
@@ -39,19 +51,62 @@ public class SecondGameMode extends JPanel{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         CalculateAsteroids();
+        CalculateSpaceShip();
         drawAsteroids(g);
         DrawSpaceShip(g);
         //System.out.println("PAINT COMPONENT");
     }
 
-    public void DrawSpaceShip(Graphics g) {
-        ImageIcon SpaceShipIconUp = new ImageIcon("images/spaceship-up.png");
-		Image SpaceShipIconUpImage = SpaceShipIconUp.getImage();
-		Image resizedSpaceShipIconUp = SpaceShipIconUpImage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
-		ImageIcon scaledSpaceShipIconUp = new ImageIcon(resizedSpaceShipIconUp);
+    public void CalculateSpaceShip() {
+        PointerInfo a = MouseInfo.getPointerInfo();
+        Point b = a.getLocation();
 
-        scaledSpaceShipIconUp.paintIcon(null, g, xposship, yposship);
+        int xposmouse = (int) b.getX();
+        int yposmouse = (int) b.getY();
+
+        int Opposite = (yposmouse - 500);
+        int Adjacent = (xposmouse - 1000);
+        double OppositeDouble = Double.valueOf(Opposite);
+        double AdjacentDouble = Double.valueOf(Adjacent);
+        if (Adjacent >= 0) {
+            Alpha = Math.atan(OppositeDouble / AdjacentDouble);
+        }
+        else {
+            Alpha = Math.PI + Math.atan(OppositeDouble / AdjacentDouble);
+        }
+
+        System.out.println(Alpha);
+
+        //xposship = xposmouse;
+        //yposship = yposmouse;
     }
+
+    public void DrawSpaceShip(Graphics g) {
+
+
+        
+
+        AffineTransform at = AffineTransform.getTranslateInstance(1000, 200);
+        at.rotate(Alpha);
+        BufferedImage ShipBufferedImage = LoadImage("images/spaceship-up.png");
+        Graphics2D g2d = (Graphics2D) g;
+        //g2d.drawImage(ShipBufferedImage, 800, 500, 200, 200, null);
+        g2d.drawImage(ShipBufferedImage, at, null);
+    }
+
+    BufferedImage LoadImage(String FileName) 
+        {
+            BufferedImage img = null;
+
+            try{
+                img = ImageIO.read(new File(FileName));
+            }catch(IOException e){
+                
+            }
+            return img;
+        }
+
+    
 
     public void CalculateAsteroids() {
         if (CountDrawAsteroid == 200) {
@@ -66,6 +121,9 @@ public class SecondGameMode extends JPanel{
     }
 
     public void drawAsteroids(Graphics g) {
+
+
+
         g.setColor(Color.white);
         /*
         for (int i = 0; i <= CurrentAsteroid; i++) {
