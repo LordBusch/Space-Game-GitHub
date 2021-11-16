@@ -1,11 +1,10 @@
-import javax.swing.*;
-import java.io.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeUnit;
-import java.awt.Toolkit;
-import java.awt.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Calculate extends JLabel {
 
@@ -129,19 +128,11 @@ public class Calculate extends JLabel {
 				Image SpaceShipImgLeftImage = SpaceShipIconLeft.getImage();
 				Image resizedSpaceShipImgLeft = SpaceShipImgLeftImage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
 				ImageIcon scaledSpaceShipIconLeft = new ImageIcon(resizedSpaceShipImgLeft);
-				BufferedImage bi = new BufferedImage(
-				scaledSpaceShipIconLeft.getIconWidth(),
-				scaledSpaceShipIconLeft.getIconHeight(),
-				BufferedImage.TYPE_INT_RGB);
 				//PNG right side
 				ImageIcon SpaceShipIconRight = new ImageIcon("images/spaceship-left.png");
 				Image SpaceShipImgRightImage = SpaceShipIconRight.getImage();
 				Image resizedSpaceShipImgRight = SpaceShipImgRightImage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
 				ImageIcon scaledSpaceShipIconRight = new ImageIcon(resizedSpaceShipImgRight);
-				BufferedImage bi2 = new BufferedImage(
-				scaledSpaceShipIconRight.getIconWidth(),
-				scaledSpaceShipIconRight.getIconHeight(),
-				BufferedImage.TYPE_INT_RGB);
 
 			if (i == 0) {
 				scaledSpaceShipIconLeft.paintIcon(null, g, xship[i] - 35, yship[i] - 15);
@@ -155,28 +146,6 @@ public class Calculate extends JLabel {
 
 
 	public void CalculatePlanets() {
-		
-		//Background
-		/*
-		ImageIcon FrameBackground = new ImageIcon("Space Background 1.gif");
-		Image BackgroundImg = FrameBackground.getImage();
-		g.drawImage(BackgroundImg, Main.PANEL_SIZE_X, Main.PANEL_SIZE_Y, null);
-		*/
-
-		
-
-		 
-		/*
-		// Draw Ships
-		xship[0] = 50;
-		xship[1] = Main.PANEL_SIZE_X - 50 - shipSize;
-		for (int i = 0; i < 2; i++) {
-			yship[i] = (int)(Math.random() * Main.PANEL_SIZE_Y);
-			
-			g.setColor(Color.black);
-			g.fillRect(xship[i], yship[i], 20, 20);
-		}
-		*/
 
 		// Draw planets
 		for (int i = 0; i < numberOfPlanets; i++) {
@@ -191,33 +160,18 @@ public class Calculate extends JLabel {
 				xpos[i] = (int)(freeSpaceBorder + Math.random() * (Main.PANEL_SIZE_X - 2 * freeSpaceBorder));
 				ypos[i] = (int)(freeSpaceBorder + Math.random() * (Main.PANEL_SIZE_Y - 2 * freeSpaceBorder));
 				radius[i] = (int)(Math.random() * (Main.MAX_PLANET_RADIUS - Main.MIN_PLANET_RADIUS) + Main.MIN_PLANET_RADIUS);
-				/*
-				xpos[i] = (int)(Math.random() * Main.PANEL_SIZE_X);
-				ypos[i] = (int)(Math.random() * Main.PANEL_SIZE_Y);
-				radius[i] = (int)(Math.random() * Main.MAX_PLANET_RADIUS);
-				*/
+
 				// Check if planets collide
 				isColliding = false;
 				for (int j = 0; j < i; j++) {
 					int distanceX = (xpos[i] - xpos[j]);
 					int distanceY = (ypos[i] - ypos[j]);
 					int distanceCenters = (int)(Math.sqrt((distanceX * distanceX) + (distanceY * distanceY)));
-					//make distance between edge of frame and planet
-					/*
-					if (xpos[i] + radius[i] > 1920 - freeSpaceBorder | xpos[i] - radius[i] < 0 + freeSpaceBorder | xpos[j] + radius[j] > 1920 - freeSpaceBorder | xpos[j] - radius[j] < 0 + freeSpaceBorder) {
-						isColliding = true;
-					}
-					if (ypos[i] + radius[i] > 1080 - freeSpaceBorder | ypos[i] - radius[i] < 0 + freeSpaceBorder | ypos[j] + radius[j] > 1080 - freeSpaceBorder | ypos[j] - radius[j] < 0 + freeSpaceBorder) {
-						isColliding = true;
-					}
-					*/
+
 					if (distanceCenters < radius[i] + radius[j] + freeSpace ) {
 						isColliding = true;
 					}
-					/*
-					System.out.format("Planet %d (%d): %d (%d) - %d (%d) = %d (%d %d) %s\n", 
-							i, j, xpos[i], xpos[j], ypos[i], ypos[j], distanceCenters, radius[i], radius[j], isColliding ? "yes" : "no");
-							*/
+
 				}
 				for (int j = 0; j < 2; j++) {
 					int distanceX = (xpos[i] - xship[j]);
@@ -227,10 +181,7 @@ public class Calculate extends JLabel {
 						isColliding = true;
 						
 					}
-					/*
-					System.out.format("Ship %d (%d): %d (%d) - %d (%d) = %d (%d %d) %s\n", 
-							i, j, xpos[i], xpos[j], ypos[i], ypos[j], distanceCenters, radius[i], radius[j], isColliding ? "yes" : "no");
-							*/
+
 				}
 				
 			} while (isColliding == true);
@@ -294,10 +245,6 @@ public class Calculate extends JLabel {
 		Image resizedBlackHoleImg = BlackHoleImg.getScaledInstance(Size_BlackHole_X, Size_BlackHole_Y, java.awt.Image.SCALE_SMOOTH);
 
 		ImageIcon scaledBlackHoleIcon = new ImageIcon(resizedBlackHoleImg);
-		BufferedImage bi = new BufferedImage(
-		scaledBlackHoleIcon.getIconWidth(),
-		scaledBlackHoleIcon.getIconHeight(),
-		BufferedImage.TYPE_INT_RGB);
 
 		scaledBlackHoleIcon.paintIcon(null, g, xpos_blackhole - Size_BlackHole_X / 2, ypos_blackhole - Size_BlackHole_Y / 2);
 	}

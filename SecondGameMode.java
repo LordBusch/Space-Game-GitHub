@@ -1,20 +1,19 @@
 import javax.swing.*;
-import java.io.*;
-import java.awt.image.BufferedImage;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeUnit;
-import java.awt.Toolkit;
 import java.awt.*;
-import java.awt.Component;
-import java.awt.Graphics2D;
+import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.RenderingHints;
+import java.awt.Graphics2D;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
 import java.awt.geom.AffineTransform;
-import javax.swing.Icon;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 
 
 public class SecondGameMode extends JPanel{
@@ -83,28 +82,26 @@ public class SecondGameMode extends JPanel{
 
     public void DrawSpaceShip(Graphics g) {
 
-
+        ImageIcon SpaceShipIconLeft = new ImageIcon("Flappy Bird Icon.png");
+            Image SpaceShipImgLeftImage = SpaceShipIconLeft.getImage();
+            Image resizedSpaceShipImgLeft = SpaceShipImgLeftImage.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon scaledSpaceShipIconLeft = new ImageIcon(resizedSpaceShipImgLeft);
+            //Load AffineTransform to rotate the image
+            AffineTransform at = AffineTransform.getTranslateInstance(500, 500);
+            Image ShipBufferedImage = scaledSpaceShipIconLeft.getImage();
+            Graphics2D g2d = (Graphics2D) g;
         
 
-        AffineTransform at = AffineTransform.getTranslateInstance(1000, 200);
-        at.rotate(Alpha);
-        BufferedImage ShipBufferedImage = LoadImage("images/spaceship-up.png");
+        /*
+        AffineTransform at = AffineTransform.getTranslateInstance(500, 500);
+        at.rotate(45);
+        Image ShipBufferedImage = scaledSpaceShipIconLeft.getImage();
         Graphics2D g2d = (Graphics2D) g;
-        //g2d.drawImage(ShipBufferedImage, 800, 500, 200, 200, null);
+        */
+        at.rotate(Alpha);
+        //g2d.drawImage
         g2d.drawImage(ShipBufferedImage, at, null);
     }
-
-    BufferedImage LoadImage(String FileName) 
-        {
-            BufferedImage img = null;
-
-            try{
-                img = ImageIO.read(new File(FileName));
-            }catch(IOException e){
-                
-            }
-            return img;
-        }
 
     
 

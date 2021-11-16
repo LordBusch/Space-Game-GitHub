@@ -1,8 +1,5 @@
 import java.awt.event.KeyEvent;
-import java.awt.event.*;
-import javax.swing.*;
-import java.util.concurrent.TimeUnit;
-import java.awt.*;
+import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener{
     public static boolean up, down, right, left;

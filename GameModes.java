@@ -1,11 +1,9 @@
-import javax.swing.*;
-import java.io.*;
-import java.awt.image.BufferedImage;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeUnit;
-import java.awt.Toolkit;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 public class GameModes extends JPanel{
 
@@ -28,10 +26,6 @@ public class GameModes extends JPanel{
             Image picGameModeOneImage = picGameModeOne.getImage();
             Image resizedpicGameModeOne = picGameModeOneImage.getScaledInstance(639, 360, java.awt.Image.SCALE_SMOOTH);
             ImageIcon scaledpicGameModeOne = new ImageIcon(resizedpicGameModeOne);
-            BufferedImage bi = new BufferedImage(
-            scaledpicGameModeOne.getIconWidth(),
-            scaledpicGameModeOne.getIconHeight(),
-            BufferedImage.TYPE_INT_RGB);
 
             scaledpicGameModeOne.paintIcon(null, g, Main.PANEL_SIZE_X / 20 + 300, 100);
 

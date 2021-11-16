@@ -126,6 +126,7 @@ public class Main {
 		SecondGameModeButton.setForeground(Color.red);
 		SecondGameModeButton.setFont(fontHeading);
 		SecondGameModeButton.addActionListener(handler);
+		SecondGameModeButton.setVisible(false);
 
 		CloseWindowButton = new JButton("Close");
 		CloseWindowButton.setBounds(PANEL_SIZE_X / 2 - 150, PANEL_SIZE_Y / 6 + PANEL_SIZE_Y / 3, 300, 100);

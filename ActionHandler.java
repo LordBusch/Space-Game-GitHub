@@ -1,12 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.lang.Integer;
+import javax.swing.JFrame;
 
 
 public class ActionHandler implements ActionListener{
@@ -166,7 +161,6 @@ public class ActionHandler implements ActionListener{
 			Main.LabelAnglePlayer2.setVisible(true);
             
 		}
-
 
         if(e.getSource() == Main.SpeedButtonPlayer1) {
 			Main.InputSpeedPlayer1 = Main.textFieldSpeedPlayer1.getText();
